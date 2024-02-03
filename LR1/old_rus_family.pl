@@ -48,12 +48,3 @@ parent(duhovlad,zdislava).
 parent(duhovlad,zlatomir).
 parent(zhdana,zdislava).
 parent(zhdana,zlatomir).
-
-% men/0
-men:- man(X), write(X), nl, fail.
-
-% children(+X)
-children(X):-  parent(X, Y), write(Y), nl, fail.
-
-% mother(+X, +Y)
-mother(X, Y):- woman(X), parent(X, Y).
