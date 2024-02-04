@@ -48,3 +48,31 @@ parent(duhovlad,zdislava).
 parent(duhovlad,zlatomir).
 parent(zhdana,zdislava).
 parent(zhdana,zlatomir).
+
+% men/0
+men:- man(X), write(X), nl, fail.
+
+% women/0
+women:- woman(X), write(X), nl, fail.
+
+% children(+X)
+children(X):-  parent(X, Y), write(Y), nl, fail.
+
+% mother(+X, +Y)
+mother(X, Y):- woman(X), parent(X, Y).
+
+% brother(+X, +Y)
+brother(X, Y):- man(X), parent(Z, X), parent(Z, Y), X \= Y.
+
+% sister(+X, +Y)
+sister(X, Y):- woman(X), parent(Z, X), parent(Z, Y), X \= Y.
+
+% brothers(+X)
+brothers(X):- brother(Y, X), write(Y), nl, fail.
+
+% b_s(+X, +Y)
+b_s(X, Y):- brother(X, Y).
+b_s(X, Y):- sister(X, Y).
+
+% b_s(+X)
+b_s(X):- b_s(Y, X), write(Y), nl, fail.
