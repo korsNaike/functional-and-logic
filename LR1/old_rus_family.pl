@@ -76,3 +76,9 @@ b_s(X, Y):- sister(X, Y).
 
 % b_s(+X)
 b_s(X):- b_s(Y, X), write(Y), nl, fail.
+
+% daughter(+X, +Y)
+daughter(X, Y):- woman(X), parent(Y, X).
+
+% wife(+X, +Y)
+wife(X, Y):- woman(X), parent(X, Z), parent(Y, Z), X \= Y.
