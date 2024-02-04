@@ -82,3 +82,34 @@ daughter(X, Y):- woman(X), parent(Y, X).
 
 % wife(+X, +Y)
 wife(X, Y):- woman(X), parent(X, Z), parent(Y, Z), X \= Y.
+
+% суфиксом _facts отмечены те предикаты, которые используют только базу фактов.
+
+% grand_so(+X, +Y)
+grand_so(X, Y):- man(X), parent(Parent, X), parent(Y, Parent).
+
+% grand_sons(+X)
+grand_sons(X):- grand_so(Y, X), write(Y), nl, fail.
+
+% grand_sons_facts(+X)
+grand_sons_facts(X):- man(Y), parent(Parent, Y), parent(X, Parent), write(Y), nl, fail.
+
+% grand_ma_and_son(+X, +Y)
+grand_ma_and_son(X, Y):- woman(Y), grand_so(X, Y).
+grand_ma_and_son(X, Y):- woman(X), grand_so(Y, X).
+
+% grand_ma_and_son_facts(+X, +Y)
+grand_ma_and_son_facts(X, Y):- woman(Y), man(X), parent(Parent, X), parent(Y, Parent).
+grand_ma_and_son_facts(Y, X):- woman(Y), man(X), parent(Parent, X), parent(Y, Parent).
+
+% aunt(+X, +Y)
+aunt(X, Y):- man(X), parent(Parent_plem, Y), brother(X, Parent_plem).
+
+% aunt_facts(+X, +Y)
+aunt_facts(X, Y):- man(X), parent(Parent_plem, Y), parent(ObsParent, Parent_plem), parent(ObsParent, X), Parent_plem \= X.
+
+% aunts(+X)
+aunts(X):- aunt(Y, X), write(Y), nl, fail.
+
+% aunts_facts(+Y)
+aunts_facts(Y):- man(X), parent(Parent_plem, Y), parent(ObsParent, Parent_plem), parent(ObsParent, X), Parent_plem \= X, write(X), nl, fail.
