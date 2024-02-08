@@ -145,9 +145,39 @@ question_graphics(X5):-  write("What kind of graphics is in this game?"),nl,
                     write("4. Mixed (cartoon-realistic)"),nl,
                     read(X5).
 
+% multiplayer_genre(?Y, +X1, +X2)
+multiplayer_genre(Y, X1, X2):- multiplayer(Y, X1), genre(Y, X2).
+
+% multiplayer_genre_esports(?Y, +X1, +X2, +X3)
+multiplayer_genre_esports(Y, X1, X2, X3):- multiplayer_genre(Y, X1, X2), cybersport(Y, X3).
+
+% multiplayer_genre_esports_franchise(?Y, +X1, +X2, +X3, +X4)
+multiplayer_genre_esports_franchise(Y, X1, X2, X3, X4):- multiplayer_genre_esports(Y, X1, X2, X3), franchise(Y, X4).
+
+% multiplayer_genre_esports_franchise(?Y, +X1, +X2, +X3, +X4, +X5)
+multiplayer_genre_esports_franchise_graphic(Y, X1, X2, X3, X4, X5):- multiplayer_genre_esports_franchise(Y, X1, X2, X3, X4), graphic(Y, X5).
+
 % play/0
-play:-	question_multiplayer(X1),question_genre(X2),question_esports(X3),question_franchise(X4),
+play:-	question_multiplayer(X1),
+        findall(Y, multiplayer(Y, X1), Res1),
+        length(Res1, Len1), 
+        (Len1 =:= 1 -> writeln(Res1), false ; true),
+
+        question_genre(X2),
+        findall(Y, multiplayer_genre(Y, X1, X2), Res2),
+        length(Res2, Len2), 
+        (Len2 =:= 1 -> writeln(Res2), false ; true),
+
+        question_esports(X3),
+        findall(Y, multiplayer_genre_esports(Y, X1, X2, X3), Res3),
+        length(Res3, Len3), 
+        (Len3 =:= 1 -> write(Res3), false ; true),
+
+        question_franchise(X4),
+        findall(Y, multiplayer_genre_esports_franchise(Y, X1, X2, X3, X4), Res4),
+        length(Res4, Len4), 
+        (Len4 =:= 1 -> write(Res4), false ; true),
+
 		question_graphics(X5),
-		multiplayer(X,X1),genre(X,X2),cybersport(X,X3),franchise(X,X4),
-		graphic(X,X5),
+        multiplayer_genre_esports_franchise_graphic(X, X1, X2, X3, X4, X5),
 		write(X).
