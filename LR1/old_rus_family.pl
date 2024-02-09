@@ -62,10 +62,10 @@ children(X):-  parent(X, Y), write(Y), nl, fail.
 mother(X, Y):- woman(X), parent(X, Y).
 
 % brother(+X, +Y)
-brother(X, Y):- man(X), parent(Z, X), parent(Z, Y), X \= Y.
+brother(X, Y):- man(X), parent(Z, X), parent(Z, Y), man(Z), X \= Y.
 
 % sister(+X, +Y)
-sister(X, Y):- woman(X), parent(Z, X), parent(Z, Y), X \= Y.
+sister(X, Y):- woman(X), parent(Z, X), parent(Z, Y), man(Z), X \= Y.
 
 % brothers(+X)
 brothers(X):- brother(Y, X), write(Y), nl, fail.
@@ -80,8 +80,14 @@ b_s(X):- b_s(Y, X), write(Y), nl, fail.
 % daughter(+X, +Y)
 daughter(X, Y):- woman(X), parent(Y, X).
 
+% daughter(+X)
+daughter(X):- daughter(Y, X), write(Y), nl, fail.
+
 % wife(+X, +Y)
 wife(X, Y):- woman(X), parent(X, Z), parent(Y, Z), X \= Y.
+
+% wife(+X)
+wife(X):- wife(Y, X), write(Y).
 
 % суфиксом _facts отмечены те предикаты, которые используют только базу фактов.
 
