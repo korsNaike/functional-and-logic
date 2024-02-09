@@ -146,10 +146,10 @@ question_graphics(X_graphic):-  write("What kind of graphics is in this game?"),
                     read(X_graphic).
 
 % multiplayer_genre(?Y, +X_multiplayer, +X_genre)
-multiplayer_genre(Y, X_genre, X_genre):- multiplayer(Y, X_multiplayer), genre(Y, X_genre).
+multiplayer_genre(Y, X_multiplayer, X_genre):- multiplayer(Y, X_multiplayer), genre(Y, X_genre).
 
 % multiplayer_genre_esports(?Y, +X_multiplayer, +X_genre, +X_esport)
-multiplayer_genre_esports(Y, X_genre, X_genre, X_esport):- multiplayer(Y, X_multiplayer), 
+multiplayer_genre_esports(Y, X_multiplayer, X_genre, X_esport):- multiplayer(Y, X_multiplayer), 
                                                             genre(Y, X_genre), 
                                                             cybersport(Y, X_esport).
 
