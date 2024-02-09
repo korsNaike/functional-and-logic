@@ -104,14 +104,14 @@ graphic(valorant, 1).
 graphic(world_of_warcraft, 1).
 
 % question_multiplayer(-X)
-question_multiplayer(X1):-	write("Is the game primarily focused on multiplayer gameplay?"),nl,
+question_multiplayer(X_multiplayer):-	write("Is the game primarily focused on multiplayer gameplay?"),nl,
 				            write("1. Yes"),nl,
 				            write("2. NO"),nl,
 				            write("3. Both multiplayer and single player games are possible"),nl,
-				            read(X1).
+				            read(X_multiplayer).
 
 % question_genre(-X)
-question_genre(X2):- write("What genre prevails in this game?"),nl,
+question_genre(X_genre):- write("What genre prevails in this game?"),nl,
                     write("1. Survival Sandbox"),nl,
                     write("2. Arcade game"),nl,
                     write("3. MOBA"),nl,
@@ -121,63 +121,72 @@ question_genre(X2):- write("What genre prevails in this game?"),nl,
                     write("7. Battle Royale"),nl,
                     write("8. Action-Adventure"),nl,
                     write("9. Sports simulator"),nl,
-                    read(X2).
+                    read(X_genre).
 
 % question_esports(-X)
-question_esports(X3):-  write("Is the game popular on the esports scene?"),nl,
+question_esports(X_esport):-  write("Is the game popular on the esports scene?"),nl,
                     write("1. Yes"),nl,
                     write("2. No"),nl,
                     write("3. Rather yes"),nl,
                     write("4. Probably not"),nl,
-                    read(X3).
+                    read(X_esport).
 
 % question_franchise(-X)
-question_franchise(X4):-  write("Is the game part of the franchise?"),nl,
+question_franchise(X_franchise):-  write("Is the game part of the franchise?"),nl,
                     write("1. Yes"),nl,
                     write("2. No"),nl,
-                    read(X4).
+                    read(X_franchise).
 
 % question_graphics(-X)
-question_graphics(X5):-  write("What kind of graphics is in this game?"),nl,
+question_graphics(X_graphic):-  write("What kind of graphics is in this game?"),nl,
                     write("1. Cartoon"),nl,
                     write("2. Realistic"),nl,
                     write("3. Low-poly or pixel"),nl,
                     write("4. Mixed (cartoon-realistic)"),nl,
-                    read(X5).
+                    read(X_graphic).
 
-% multiplayer_genre(?Y, +X1, +X2)
-multiplayer_genre(Y, X1, X2):- multiplayer(Y, X1), genre(Y, X2).
+% multiplayer_genre(?Y, +X_multiplayer, +X_genre)
+multiplayer_genre(Y, X_genre, X_genre):- multiplayer(Y, X_multiplayer), genre(Y, X_genre).
 
-% multiplayer_genre_esports(?Y, +X1, +X2, +X3)
-multiplayer_genre_esports(Y, X1, X2, X3):- multiplayer_genre(Y, X1, X2), cybersport(Y, X3).
+% multiplayer_genre_esports(?Y, +X_multiplayer, +X_genre, +X_esport)
+multiplayer_genre_esports(Y, X_genre, X_genre, X_esport):- multiplayer(Y, X_multiplayer), 
+                                                            genre(Y, X_genre), 
+                                                            cybersport(Y, X_esport).
 
-% multiplayer_genre_esports_franchise(?Y, +X1, +X2, +X3, +X4)
-multiplayer_genre_esports_franchise(Y, X1, X2, X3, X4):- multiplayer_genre_esports(Y, X1, X2, X3), franchise(Y, X4).
+% multiplayer_genre_esports_franchise(?Y, +X_multiplayer, +X_genre, +X_esport, +X_franchise)
+multiplayer_genre_esports_franchise(Y, X_multiplayer, X_genre, X_esport, X_franchise):- multiplayer(Y, X_multiplayer), 
+                                                                                        genre(Y, X_genre), 
+                                                                                        cybersport(Y, X_esport), 
+                                                                                        franchise(Y, X_franchise).
 
-% multiplayer_genre_esports_franchise(?Y, +X1, +X2, +X3, +X4, +X5)
-multiplayer_genre_esports_franchise_graphic(Y, X1, X2, X3, X4, X5):- multiplayer_genre_esports_franchise(Y, X1, X2, X3, X4), graphic(Y, X5).
+% multiplayer_genre_esports_franchise(?Y, +X_multiplayer, +X_genre, +X_esport, +X_franchise, +X_graphic)
+multiplayer_genre_esports_franchise_graphic(Y, X_multiplayer, X_genre, X_esport, X_franchise, X_graphic):- multiplayer(Y, X_multiplayer), 
+                                                                                                            genre(Y, X_genre), 
+                                                                                                            cybersport(Y, X_esport), 
+                                                                                                            franchise(Y, X_franchise), 
+                                                                                                            graphic(Y, X_graphic).
 
 % play/0
-play:-	question_multiplayer(X1),
-        findall(Y, multiplayer(Y, X1), Res1),
-        length(Res1, Len1), 
-        (Len1 =:= 1 -> writeln(Res1), false ; true),
+play:-	question_multiplayer(X_multiplayer),
+        findall(Y, multiplayer(Y, X_multiplayer), Res_multiplayer),
+        length(Res_multiplayer, Len_multiplayer), 
+        (Len_multiplayer =:= 1 -> writeln(Res_multiplayer), false ; true),
 
-        question_genre(X2),
-        findall(Y, multiplayer_genre(Y, X1, X2), Res2),
-        length(Res2, Len2), 
-        (Len2 =:= 1 -> writeln(Res2), false ; true),
+        question_genre(X_genre),
+        findall(Y, multiplayer_genre(Y, X_multiplayer, X_genre), Res_genre),
+        length(Res_genre, Len_genre), 
+        (Len_genre =:= 1 -> writeln(Res_genre), false ; true),
 
-        question_esports(X3),
-        findall(Y, multiplayer_genre_esports(Y, X1, X2, X3), Res3),
-        length(Res3, Len3), 
-        (Len3 =:= 1 -> write(Res3), false ; true),
+        question_esports(X_esport),
+        findall(Y, multiplayer_genre_esports(Y, X_multiplayer, X_genre, X_esport), Res_esport),
+        length(Res_esport, Len_esport),
+        (Len_esport =:= 1 -> write(Res_esport), false ; true),
 
-        question_franchise(X4),
-        findall(Y, multiplayer_genre_esports_franchise(Y, X1, X2, X3, X4), Res4),
-        length(Res4, Len4), 
-        (Len4 =:= 1 -> write(Res4), false ; true),
+        question_franchise(X_franchise),
+        findall(Y, multiplayer_genre_esports_franchise(Y, X_multiplayer, X_genre, X_esport, X_franchise), Res_franchise),
+        length(Res_franchise, Len_franchise),
+        (Len_franchise =:= 1 -> write(Res_franchise), false ; true),
 
-		question_graphics(X5),
-        multiplayer_genre_esports_franchise_graphic(X, X1, X2, X3, X4, X5),
+		question_graphics(X_graphics),
+        multiplayer_genre_esports_franchise_graphic(X, X_multiplayer, X_genre, X_esport, X_franchise, X_graphics),
 		write(X).
