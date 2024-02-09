@@ -23,6 +23,8 @@
 18. Mortal Combat
 19. Cyberpunk 2077
 20. The Forest
+21. The Witcher 3
+22. Pro Evolution Soccer
 
 # Вопросы
 
@@ -58,6 +60,16 @@
     3. Низкополиогональная или пиксельная
     4. Смешанная (мультяншо-реалистичная)
 
+(Вопрос для различия игр FIFA и Pro Evolution Soccer)
+6. Название этой игры совпадает с названием международной федерации футбола?
+    1. Да.
+    2. Нет.
+
+(Вопрос для различия игр Skyrim и Witcher 3)
+7. Можете ли вы выбирать внешний вид вашего персонажа в этой игре?
+    1. Да.
+    2. Нет.
+
 # Ответы
 
 1. Minecraft - 3, 1, 4, 2, 3
@@ -74,9 +86,11 @@
 12. Lego Marvel Superheroes - 2, 8, 2, 1, 1
 13. Overwatch - 1, 4, 4, 2, 1
 14. World of Warcraft - 1, 5, 2, 1, 1
-15. FIFA - 3, 9, 3, 1, 2
+15. FIFA - 3, 9, 3, 1, 2, 1
 16. Rocket League - 1, 2, 3, 2, 4
-17. The Elder Scrolls V: Skyrim - 2, 5, 2, 1, 2
+17. The Elder Scrolls V: Skyrim - 2, 5, 2, 1, 2, 1
 18. Mortal Combat - 3, 8, 3, 1, 2
 19. Cyberpunk 2077 - 2, 5, 2, 2, 2
-20. The Forest - 3, 1, 2, 1, 2 
+20. The Forest - 3, 1, 2, 1, 2
+21. The Witcher 3 - 2, 5, 2, 1, 2, 2
+22. Pro Evolution Soccer - 3, 9, 3, 1, 2, 2

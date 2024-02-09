@@ -16,8 +16,10 @@ multiplayer(overwatch, 1).
 multiplayer(pubg, 1).
 multiplayer(rocket_league, 1).
 multiplayer(skyrim, 2).
+multiplayer(witcher_3, 2).
 multiplayer(valorant, 1).
 multiplayer(world_of_warcraft, 1).
+multiplayer(pro_evolution_soccer, 3).
 
 genre(among_us, 6).
 genre(apex_legends, 7).
@@ -37,8 +39,10 @@ genre(overwatch, 4).
 genre(pubg, 7).
 genre(rocket_league, 2).
 genre(skyrim, 5).
+genre(witcher_3, 5).
 genre(valorant, 4).
 genre(world_of_warcraft, 5).
+genre(pro_evolution_soccer, 9).
 
 cybersport(among_us, 4).
 cybersport(apex_legends, 3).
@@ -58,8 +62,10 @@ cybersport(overwatch, 4).
 cybersport(pubg, 1).
 cybersport(rocket_league, 3).
 cybersport(skyrim, 2).
+cybersport(witcher_3, 2).
 cybersport(valorant, 1).
 cybersport(world_of_warcraft, 2).
+cybersport(pro_evolution_soccer, 3).
 
 franchise(among_us, 2).
 franchise(apex_legends, 2).
@@ -79,8 +85,10 @@ franchise(overwatch, 2).
 franchise(pubg, 2).
 franchise(rocket_league, 2).
 franchise(skyrim, 1).
+franchise(witcher_3, 1).
 franchise(valorant, 2).
 franchise(world_of_warcraft, 1).
+franchise(pro_evolution_soccer, 1).
 
 graphic(among_us, 1).
 graphic(apex_legends, 4).
@@ -102,6 +110,14 @@ graphic(rocket_league, 4).
 graphic(skyrim, 2).
 graphic(valorant, 1).
 graphic(world_of_warcraft, 1).
+graphic(pro_evolution_soccer, 2).
+graphic(witcher_3, 2).
+
+footbal_org(fifa, 1).
+footbal_org(pro_evolution_soccer, 2).
+
+change_character(skyrim, 1).
+change_character(witcher_3, 2).
 
 % question_multiplayer(-X)
 question_multiplayer(X_multiplayer):-	write("Is the game primarily focused on multiplayer gameplay?"),nl,
@@ -145,6 +161,18 @@ question_graphics(X_graphic):-  write("What kind of graphics is in this game?"),
                     write("4. Mixed (cartoon-realistic)"),nl,
                     read(X_graphic).
 
+% question_footbal_org(-X)
+question_footbal_org(X_footbal_org):-  write("The name of this game is the same as the name of the international football Federation?"),nl,
+                    write("1. Yes"),nl,
+                    write("2. No"),nl,
+                    read(X_footbal_org).
+
+% question_change_character(-X)
+question_change_character(X_change_character):-  write("Can you choose the appearance of your character in this game?"),nl,
+                    write("1. Yes"),nl,
+                    write("2. No"),nl,
+                    read(X_change_character).
+
 % multiplayer_genre(?Y, +X_multiplayer, +X_genre)
 multiplayer_genre(Y, X_multiplayer, X_genre):- multiplayer(Y, X_multiplayer), genre(Y, X_genre).
 
@@ -165,6 +193,22 @@ multiplayer_genre_esports_franchise_graphic(Y, X_multiplayer, X_genre, X_esport,
                                                                                                             cybersport(Y, X_esport), 
                                                                                                             franchise(Y, X_franchise), 
                                                                                                             graphic(Y, X_graphic).
+
+% multiplayer_genre_esports_franchise(?Y, +X_multiplayer, +X_genre, +X_esport, +X_franchise, +X_graphic, +X_footbal_org)
+multiplayer_genre_esports_franchise_graphic_foot_org(Y, X_multiplayer, X_genre, X_esport, X_franchise, X_graphic, X_footbal_org):- multiplayer(Y, X_multiplayer), 
+                                                                                                            genre(Y, X_genre), 
+                                                                                                            cybersport(Y, X_esport), 
+                                                                                                            franchise(Y, X_franchise), 
+                                                                                                            graphic(Y, X_graphic),
+                                                                                                            footbal_org(Y, X_footbal_org).
+
+% multiplayer_genre_esports_franchise(?Y, +X_multiplayer, +X_genre, +X_esport, +X_franchise, +X_graphic, +X_change_character)
+multiplayer_genre_esports_franchise_graphic_change_char(Y, X_multiplayer, X_genre, X_esport, X_franchise, X_graphic, X_change_character):- multiplayer(Y, X_multiplayer), 
+                                                                                                            genre(Y, X_genre), 
+                                                                                                            cybersport(Y, X_esport), 
+                                                                                                            franchise(Y, X_franchise), 
+                                                                                                            graphic(Y, X_graphic),
+                                                                                                            change_character(Y, X_change_character).
 
 % play/0
 play:-	question_multiplayer(X_multiplayer),
@@ -187,6 +231,16 @@ play:-	question_multiplayer(X_multiplayer),
         length(Res_franchise, Len_franchise),
         (Len_franchise =:= 1 -> write(Res_franchise), false ; true),
 
-		question_graphics(X_graphics),
-        multiplayer_genre_esports_franchise_graphic(X, X_multiplayer, X_genre, X_esport, X_franchise, X_graphics),
-		write(X).
+		question_graphics(X_graphic),
+        % первое условие - комбинация для проверки вопроса question_footbal_org
+        ((X_multiplayer =:= 3, X_genre =:= 9, X_esport =:= 3, X_franchise =:= 1, X_graphic =:= 2)  -> 
+        (question_footbal_org(X_footbal_org),
+        multiplayer_genre_esports_franchise_graphic_foot_org(Y, X_multiplayer, X_genre, X_esport, X_franchise, X_graphic, X_footbal_org)) ; 
+        % второе условие - комбинация для проверки вопроса question_change_character
+        ((X_multiplayer =:= 2, X_genre =:= 5, X_esport =:= 2, X_franchise =:= 1, X_graphic =:= 2)  -> 
+        (question_change_character(X_change_character),
+        multiplayer_genre_esports_franchise_graphic_change_char(Y, X_multiplayer, X_genre, X_esport, X_franchise, X_graphic, X_change_character)) ;
+        % стандартный сценарий
+        multiplayer_genre_esports_franchise_graphic(Y, X_multiplayer, X_genre, X_esport, X_franchise, X_graphic)
+        )),
+		write(Y).
