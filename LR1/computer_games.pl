@@ -173,28 +173,33 @@ question_change_character(X_change_character):-  write("Can you choose the appea
                     write("2. No"),nl,
                     read(X_change_character).
 
-% multiplayer_genre(?Y, +X_multiplayer, +X_genre)
+% multiplayer_genre(?Y, +X_multiplayer, +X_genre) 
+% проверка ответа по жанру и мультплееру
 multiplayer_genre(Y, X_multiplayer, X_genre):- multiplayer(Y, X_multiplayer), genre(Y, X_genre).
 
-% multiplayer_genre_esports(?Y, +X_multiplayer, +X_genre, +X_esport)
+% multiplayer_genre_esports(?Y, +X_multiplayer, +X_genre, +X_esport) 
+% проверка ответа по жанру, мультиплееру и киберспорту
 multiplayer_genre_esports(Y, X_multiplayer, X_genre, X_esport):- multiplayer(Y, X_multiplayer), 
                                                             genre(Y, X_genre), 
                                                             cybersport(Y, X_esport).
 
-% multiplayer_genre_esports_franchise(?Y, +X_multiplayer, +X_genre, +X_esport, +X_franchise)
+% multiplayer_genre_esports_franchise(?Y, +X_multiplayer, +X_genre, +X_esport, +X_franchise) 
+% проверка ответа по жанру, мультиплееру, киберспорту и франшизе
 multiplayer_genre_esports_franchise(Y, X_multiplayer, X_genre, X_esport, X_franchise):- multiplayer(Y, X_multiplayer), 
                                                                                         genre(Y, X_genre), 
                                                                                         cybersport(Y, X_esport), 
                                                                                         franchise(Y, X_franchise).
 
-% multiplayer_genre_esports_franchise(?Y, +X_multiplayer, +X_genre, +X_esport, +X_franchise, +X_graphic)
+% multiplayer_genre_esports_franchise(?Y, +X_multiplayer, +X_genre, +X_esport, +X_franchise, +X_graphic) 
+% проверка ответа по жанру, мультиплееру, киберспорту, франшизе и виду графики
 multiplayer_genre_esports_franchise_graphic(Y, X_multiplayer, X_genre, X_esport, X_franchise, X_graphic):- multiplayer(Y, X_multiplayer), 
                                                                                                             genre(Y, X_genre), 
                                                                                                             cybersport(Y, X_esport), 
                                                                                                             franchise(Y, X_franchise), 
                                                                                                             graphic(Y, X_graphic).
 
-% multiplayer_genre_esports_franchise(?Y, +X_multiplayer, +X_genre, +X_esport, +X_franchise, +X_graphic, +X_footbal_org)
+% multiplayer_genre_esports_franchise(?Y, +X_multiplayer, +X_genre, +X_esport, +X_franchise, +X_graphic, +X_footbal_org) 
+% проверка ответа по жанру, мультиплееру, киберспорту, франшизе, виду графики и доп вопросу про фифу
 multiplayer_genre_esports_franchise_graphic_foot_org(Y, X_multiplayer, X_genre, X_esport, X_franchise, X_graphic, X_footbal_org):- multiplayer(Y, X_multiplayer), 
                                                                                                             genre(Y, X_genre), 
                                                                                                             cybersport(Y, X_esport), 
@@ -202,7 +207,8 @@ multiplayer_genre_esports_franchise_graphic_foot_org(Y, X_multiplayer, X_genre, 
                                                                                                             graphic(Y, X_graphic),
                                                                                                             footbal_org(Y, X_footbal_org).
 
-% multiplayer_genre_esports_franchise(?Y, +X_multiplayer, +X_genre, +X_esport, +X_franchise, +X_graphic, +X_change_character)
+% multiplayer_genre_esports_franchise(?Y, +X_multiplayer, +X_genre, +X_esport, +X_franchise, +X_graphic, +X_change_character) 
+% проверка ответа по жанру, мультиплееру, киберспорту, франшизе, виду графики и доп вопросу про изменение персонажа
 multiplayer_genre_esports_franchise_graphic_change_char(Y, X_multiplayer, X_genre, X_esport, X_franchise, X_graphic, X_change_character):- multiplayer(Y, X_multiplayer), 
                                                                                                             genre(Y, X_genre), 
                                                                                                             cybersport(Y, X_esport), 
@@ -210,7 +216,7 @@ multiplayer_genre_esports_franchise_graphic_change_char(Y, X_multiplayer, X_genr
                                                                                                             graphic(Y, X_graphic),
                                                                                                             change_character(Y, X_change_character).
 
-% play/0
+% play/0 - начать игру
 play:-	question_multiplayer(X_multiplayer),
         findall(Y, multiplayer(Y, X_multiplayer), Res_multiplayer),
         length(Res_multiplayer, Len_multiplayer), 
