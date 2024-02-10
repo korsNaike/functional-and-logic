@@ -55,67 +55,67 @@ men:- man(X), write(X), nl, fail.
 % women/0
 women:- woman(X), write(X), nl, fail.
 
-% children(+X)
+% children(+X) - вывести всех детей X
 children(X):-  parent(X, Y), write(Y), nl, fail.
 
-% mother(+X, +Y)
+% mother(+X, +Y) - является ли X матерью Y
 mother(X, Y):- woman(X), parent(X, Y).
 
-% brother(+X, +Y)
+% brother(?X, +Y) - является ли X братом Y
 brother(X, Y):- man(X), parent(Z, X), parent(Z, Y), man(Z), X \= Y.
 
-% sister(+X, +Y)
+% sister(?X, +Y) - является ли X братом Y
 sister(X, Y):- woman(X), parent(Z, X), parent(Z, Y), man(Z), X \= Y.
 
-% brothers(+X)
+% brothers(+X) - вывести всех братьев X
 brothers(X):- brother(Y, X), write(Y), nl, fail.
 
-% b_s(+X, +Y)
+% b_s(?X, +Y) - является ли X братом или сестрой Y 
 b_s(X, Y):- brother(X, Y).
 b_s(X, Y):- sister(X, Y).
 
 % b_s(+X)
 b_s(X):- b_s(Y, X), write(Y), nl, fail.
 
-% daughter(+X, +Y)
+% daughter(?X, +Y) - является ли X дочкой Y
 daughter(X, Y):- woman(X), parent(Y, X).
 
-% daughter(+X)
+% daughter(+X) - вывести всех дочек X
 daughter(X):- daughter(Y, X), write(Y), nl, fail.
 
-% wife(+X, +Y)
+% wife(?X, +Y) - является ли X женой Y
 wife(X, Y):- woman(X), parent(X, Z), parent(Y, Z), X \= Y.
 
-% wife(+X)
+% wife(+X) - вывести жену X
 wife(X):- wife(Y, X), write(Y).
 
 % суфиксом _facts отмечены те предикаты, которые используют только базу фактов.
 
-% grand_so(+X, +Y)
+% grand_so(?X, +Y) - является ли X внуком Y
 grand_so(X, Y):- man(X), parent(Parent, X), parent(Y, Parent).
 
-% grand_sons(+X)
+% grand_sons(+X) - вывести всех внуков X
 grand_sons(X):- grand_so(Y, X), write(Y), nl, fail.
 
-% grand_sons_facts(+X)
+% grand_sons_facts(+X) - вывести всех внуков X (используя только факты)
 grand_sons_facts(X):- man(Y), parent(Parent, Y), parent(X, Parent), write(Y), nl, fail.
 
-% grand_ma_and_son(+X, +Y)
+% grand_ma_and_son(+X, +Y) - является ли X бабушкой Y
 grand_ma_and_son(X, Y):- woman(Y), grand_so(X, Y).
 grand_ma_and_son(X, Y):- woman(X), grand_so(Y, X).
 
-% grand_ma_and_son_facts(+X, +Y)
+% grand_ma_and_son_facts(+X, +Y) - является ли X бабушкой Y (используя только факты)
 grand_ma_and_son_facts(X, Y):- woman(Y), man(X), parent(Parent, X), parent(Y, Parent).
 grand_ma_and_son_facts(Y, X):- woman(Y), man(X), parent(Parent, X), parent(Y, Parent).
 
-% aunt(+X, +Y)
+% aunt(?X, +Y) - является ли X дядей Y
 aunt(X, Y):- man(X), parent(Parent_plem, Y), brother(X, Parent_plem).
 
-% aunt_facts(+X, +Y)
+% aunt_facts(?X, +Y) - является ли X дядей Y (используя только факты)
 aunt_facts(X, Y):- man(X), parent(Parent_plem, Y), parent(ObsParent, Parent_plem), parent(ObsParent, X), Parent_plem \= X.
 
-% aunts(+X)
+% aunts(+X) - вывести всех дядей X
 aunts(X):- aunt(Y, X), write(Y), nl, fail.
 
-% aunts_facts(+Y)
+% aunts_facts(+Y) - вывести всех дядей Y
 aunts_facts(Y):- man(X), parent(Parent_plem, Y), parent(ObsParent, Parent_plem), parent(ObsParent, X), Parent_plem \= X, write(X), nl, fail.
