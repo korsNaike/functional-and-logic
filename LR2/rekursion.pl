@@ -63,3 +63,26 @@ remove_with_sum_number([HeadList|TailList], NeedSum, ResultList):-
         NeedSum is SumNumbers,
         remove_with_sum_number(TailList, NeedSum, ResultList), !.
 remove_with_sum_number([HeadList|TailList], NeedSum, ResultList):- append(ResultList, [HeadList], NewList), remove_with_sum_number(TailList, NeedSum, NewList), !.
+
+% min_digit(+Number, -Min) - найти минимальную цифру в числе
+min_digit(Number, Min):- min_digit(Number, CurMin, Min).
+min_digit(0, CurMin, CurMin):- !. 
+min_digit(Number, CurMin, Min):- var(CurMin), NewNumber is Number // 10, Ost is Number mod 10, min_digit(NewNumber, Ost, Min), !. 
+min_digit(Number, CurMin, Min):- NewNumber is Number // 10, Ost is Number mod 10, Ost < CurMin, min_digit(NewNumber, Ost, Min), !.
+min_digit(Number, CurMin, Min):- NewNumber is Number // 10, min_digit(NewNumber, CurMin, Min), !.
+
+% proizv_cifr_ne_del_5(+N, -X) - найти произведение цифр числа, не делящихся на 5
+proizv_cifr_ne_del_5(N, X):- proizv_cifr_ne_del_5(N, 1, X).
+proizv_cifr_ne_del_5(0, X, X):- !.
+proizv_cifr_ne_del_5(N, CurX, X):- N1 is N // 10, 
+                                Digit is N mod 10, 
+                                Ost is Digit mod 5, 
+                                Ost \= 0,
+                                NewX is CurX * Digit, 
+                                proizv_cifr_ne_del_5(N1, NewX, X), !.
+proizv_cifr_ne_del_5(N, CurX, X):- N1 is N // 10, proizv_cifr_ne_del_5(N1, CurX, X), !.
+
+% nod(+FirstNumber, +SecondNumber, -Result) - найти НОД двух чисел
+nod(FirstNumber, 0, FirstNumber):- !.
+nod(_, 0, _):- !, fail.
+nod(FirstNumber, SecondNumber, Result):- Ost is FirstNumber mod SecondNumber, nod(SecondNumber, Ost, Result).
