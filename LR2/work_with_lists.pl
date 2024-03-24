@@ -79,3 +79,28 @@ check_count_min_in_interval:-
     read_list_and_interval(List, From, To),
     min_in_interval_in_list(List, From, To, Result),
     print_result(Result).
+
+
+% max_in_list(+List, -Result) - найти максимальное число в списке
+max_in_list(List, Result):- max_in_list(List, CurRes, Result).
+max_in_list([], CurRes, Result):- Result is CurRes, !.
+max_in_list([HeadList|TailList], CurRes, Result):- var(CurRes), CurRes is HeadList, max_in_list(TailList, CurRes, Result), !.
+max_in_list([HeadList|TailList],CurRes, Result):- HeadList > CurRes, max_in_list(TailList, HeadList, Result), !.
+max_in_list([_|TailList], CurRes, Result):- max_in_list(TailList, CurRes, Result), !.
+
+% check_max_in_interval/0 - проверить наличие максимального элемента списка в интервале
+check_max_in_interval:-
+    read_list_and_interval(List, From, To),
+    max_in_list(List, Max),
+    check_max_in_interval(Max, From, To, Result),
+    print_result(Result).
+
+% check_max_in_interval(+Max, +From, +To, -Result) - входит ли Max в интервал [From; To]
+check_max_in_interval(Max, From, To, Result):-
+    check_interval(Max, From, To),
+    Result = true,
+    !.
+
+check_max_in_interval(_, _, _, Result):-
+    Result = false,
+    !.
