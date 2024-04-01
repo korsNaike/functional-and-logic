@@ -136,3 +136,126 @@ pr_friends:-
     write("ivanov:"),write(ProfIvanov),write(" "), nl,
     write("semenov:"),write(ProfSemenov),write(" "),nl,
     write("borisov:"),write(ProfBorisov), write(" "),nl,!.
+
+% print_even_odd_elements/0 - напечатать сначала элементы, которые стоят на чётных индексах списка, а затем на нечётных
+print_even_odd_elements:-
+    write('Enter the list ("end" for end of list): '), read_list(List),
+    print_even_elements(List),
+    write(' '),
+    print_odd_elements(List).
+
+% print_even_elements(+List) - напечатать только элементы, стоящие на чётных индексах списка
+print_even_elements([]):- !.
+print_even_elements([X]):- write(X), !.
+print_even_elements([X,_|T]) :-
+    write(X),
+    write(' '),
+    print_even_elements(T).
+
+% print_odd_elements(+List) - напечатать только элементы, стоящие на нечётных индексах списка
+print_odd_elements([]):- !.
+print_odd_elements([_]):- !.
+print_odd_elements([_,X|T]) :-
+    write(X),
+    write(' '),
+    print_odd_elements(T).
+
+% check_alternating/0 - ввести и проверить список на чередование в нём вещественных и целых чисел
+check_alternating:-
+    write('Enter the list ("end" for end of list): '), read_list(List),
+    !,
+    check_alternating(List).
+
+% check_alternating(+List) - предикат, проверяющий, что в списке чередуются вещественные и целые числа
+check_alternating([_]):- !.
+check_alternating([Int, Float|Tail]) :- 
+    integer(Int), float(Float), check_alternating([Float|Tail]), !.
+check_alternating([Float, Int|Tail]) :- 
+    float(Float), integer(Int), check_alternating([Int|Tail]), !.
+
+% count_elements/0 - ввести список и вывести в одном списке его уникальные элементы списка, а в втором - количество повторений каждого элемента
+count_elements:-
+    write('Enter the list ("end" for end of list): '), read_list(List),
+    !,
+    count_elements(List, L1, L2),
+    write('Unique elements: '), write_list(L1),
+    write('Count of elements: '), write_list(L2).
+    
+% count_elements(+List, -L1, -L2) - вывести в L1 уникальные элементы списка List, а в L2 количество повторений каждого элемента
+count_elements([], [], []).
+
+count_elements([X|Xs], L1, L2) :-
+    count_elements(Xs, L1_Tail, L2_Tail),
+    (   member(X, L1_Tail)
+    ->  L1 = L1_Tail,
+        nth1(Index, L1_Tail, X),
+        nth1(Index, L2_Tail, Count),
+        NewCount is Count + 1,
+        replace(Index, L2_Tail, NewCount, L2)
+    ;   L1 = [X|L1_Tail],
+        L2 = [1|L2_Tail]
+    ).
+
+% replace(+Index, +CurList, +Value, -ResList) - заменить элемент на индексе Index в списке CurList значением Value и вернуть новый список в ResList
+replace(1, [_|Xs], Value, [Value|Xs]).
+replace(N, [X|Xs], Value, [X|Ys]) :-
+    N > 1,
+    N1 is N - 1,
+    replace(N1, Xs, Value, Ys).
+
+% is_prime(+X) - проверка числа на простоту
+is_prime(X) :-
+    X > 1,
+    not(has_divisor(X, 2)).
+
+% has_divisor(+X, +Y) - проверить, есть ли у X делители в диапазоне от Y до X
+has_divisor(X, Y) :-
+    Y * Y =< X,
+    ( X mod Y =:= 0
+    ; Y1 is Y + 1,
+      has_divisor(X, Y1)
+    ).
+
+% prime_divisors/0
+prime_divisors:-
+    write('Enter the number: '), read(Number),
+    !,
+    prime_divisors(Number, Result),
+    write('Divisors: '), write_list(Result).
+
+% prime_divisors(+N, -Divisors) - получить список простых делителей числа, при чём, если есть делитель в степени, то выводить его несколько раз.
+prime_divisors(N, Divisors) :-
+    prime_divisors(N, 2, Divisors), !.
+
+prime_divisors(1, _, []) :- !.
+
+prime_divisors(N, D, [D|Divisors]) :-
+    N mod D =:= 0,
+    is_prime(D),
+    N1 is N // D,
+    prime_divisors(N1, D, Divisors), !.
+
+prime_divisors(N, D, Divisors) :-
+    D2 is D + 1,
+    prime_divisors(N, D2, Divisors), !.
+
+% sum_greater/0 - считать список и получить количество элементов из списка,которые больше, чем сумма всех предыдущих элементов списк
+sum_greater:-
+    write('Enter the list ("end" for end of list): '), read_list(List),
+    !,
+    sum_greater(List, Count),
+    write("Count: "), write(Count).
+
+% sum_greater(+List, -Count) - получить количество элементов из списка,которые больше, чем сумма всех предыдущих элементов списка
+sum_greater(List, Count) :-
+    sum_greater(List, 0, Count), !.
+
+sum_greater([], _, 0).
+sum_greater([X|Xs], PrevSum, Count) :-
+    X > PrevSum,
+    NewPrevSum is PrevSum + X,
+    sum_greater(Xs, NewPrevSum, SubCount),
+    Count is SubCount + 1, !.
+sum_greater([X|Xs], PrevSum, Count) :-
+    X =< PrevSum,
+    sum_greater(Xs, PrevSum, Count), !.
