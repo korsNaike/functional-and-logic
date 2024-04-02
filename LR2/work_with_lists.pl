@@ -259,3 +259,25 @@ sum_greater([X|Xs], PrevSum, Count) :-
 sum_greater([X|Xs], PrevSum, Count) :-
     X =< PrevSum,
     sum_greater(Xs, PrevSum, Count), !.
+
+% pr_student/0 - решение логической задачи про учеников факультетов
+% Три друга – Петр, Роман и Сергей учатся на математическом, физическом и химическом факультетах университета.
+% Если Петр математик, то Сергей не физик. Если Роман не физик, то Петр – математик.
+% Если Сергей не математик, то Роман – химик. Где учится Роман?
+pr_student:-
+        Students=[_,_,_,_],
+        in_list(Students,[petr, PetrFaculty]),
+        in_list(Students,[roman, RomanFaculty]),
+        in_list(Students,[sergey, SergeyFaculty]),
+
+        in_list(Students,[_, mathematic]),
+        in_list(Students,[_, physicist]),
+        in_list(Students,[_, chemick]),
+
+        (
+            (PetrFaculty = mathematic, SergeyFaculty \= F);
+            (RomanFaculty \= F, PetrFaculty = mathematic);
+            (SergeyFaculty \= mathematic, RomanFaculty = chemick)
+        ),
+
+        write('Roman: '), write(RomanFaculty), !.
