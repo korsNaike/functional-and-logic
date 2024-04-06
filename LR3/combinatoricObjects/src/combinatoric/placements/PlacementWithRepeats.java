@@ -6,6 +6,9 @@ import combinatoric.basic.RecursiveSearch;
 
 import java.util.Objects;
 
+/**
+ * Комбинаторный объект - размещение без повторений
+ */
 public class PlacementWithRepeats extends BaseCombObject implements NonRecursiveSearch, RecursiveSearch {
 
 
@@ -43,8 +46,8 @@ public class PlacementWithRepeats extends BaseCombObject implements NonRecursive
 
         printObject();
 
-        // генерируем следующее размещение и выводим
-        while (genNextObj()) printObject();
+        // Выводим все размещения, пока они существуют
+        printWhileExistNextComb();
     }
 
     /**

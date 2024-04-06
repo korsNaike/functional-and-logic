@@ -10,4 +10,9 @@ abstract public class BaseCombObject extends CombObject {
     public void setK(int k) {
         this.k = k;
     }
+
+    protected void printWhileExistNextComb() {
+        while (genNextObj()) printObject();
+    }
+
 }
