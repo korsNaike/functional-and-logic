@@ -6,13 +6,13 @@ import java.util.Objects;
 /**
  * Базовый класс для комбинаторных объектов
  */
-abstract public class CombObject {
+abstract public class CombObject<TypeOfAlphabet> {
 
-    private String[] alphabet;
+    private TypeOfAlphabet[] alphabet;
 
     private int n;
 
-    private String[] currentObj;
+    private TypeOfAlphabet[] currentObj;
 
     private CombObjPrinter printer;
 
@@ -24,19 +24,19 @@ abstract public class CombObject {
         return n;
     }
 
-    public void setAlphabet(String[] alphabet) {
+    public void setAlphabet(TypeOfAlphabet[] alphabet) {
         this.alphabet = alphabet;
     }
 
-    public String[] getAlphabet() {
+    public TypeOfAlphabet[] getAlphabet() {
         return alphabet;
     }
 
-    public String[] getCurrentObj() {
+    public TypeOfAlphabet[] getCurrentObj() {
         return currentObj;
     }
 
-    public void setCurrentObj(String[] currentObj) {
+    public void setCurrentObj(TypeOfAlphabet[] currentObj) {
         this.currentObj = currentObj;
     }
 
@@ -57,7 +57,7 @@ abstract public class CombObject {
      * @param value значение для замены
      * @param index индекс, на который поставить value
      */
-    public void replaceElementInCurrentObj(String value, int index)
+    public void replaceElementInCurrentObj(TypeOfAlphabet value, int index)
     {
         this.currentObj[index] = value;
     }
@@ -68,7 +68,7 @@ abstract public class CombObject {
      * @param curAlphabetValue текущий значение
      * @return Следующее значение в алфавите
      */
-    public String getNextSymbol(String curAlphabetValue) {
+    public TypeOfAlphabet getNextSymbol(TypeOfAlphabet curAlphabetValue) {
         int i = 0;
         while ((i < this.n) && (!Objects.equals(this.alphabet[i], curAlphabetValue))) {
             i = i + 1;

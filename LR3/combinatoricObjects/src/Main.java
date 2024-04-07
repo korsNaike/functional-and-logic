@@ -8,16 +8,18 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello and welcome!");
 
-        // testPlacementWithRepeats(true);
-        testCombinationNoRepeat(true);
+        testPlacementWithRepeats(false);
+        // testCombinationNoRepeat(true);
     }
 
     public static void testPlacementWithRepeats(boolean recursive)
     {
-        PlacementWithRepeats pl = new PlacementWithRepeats();
-        pl.setK(5);
+        PlacementWithRepeats<Integer> pl = new PlacementWithRepeats<Integer>();
+        int k = 5;
+        pl.setK(k);
         pl.setN(5);
-        pl.setAlphabet(new String[]{"a", "b", "c", "d", "e"});
+        pl.setAlphabet(new Integer[]{1, 2, 3, 4, 5});
+        pl.setCurrentObj(new Integer[k]);
         pl.setPrinter(new ConsolePrinter());
 
         if (recursive) {
@@ -30,10 +32,12 @@ public class Main {
 
     public static void testCombinationNoRepeat(boolean recursive)
     {
-        CombinationNoRepeat comb = new CombinationNoRepeat();
-        comb.setK(3);
+        CombinationNoRepeat<Integer> comb = new CombinationNoRepeat<>();
+        int k = 3;
+        comb.setK(k);
         comb.setN(5);
-        comb.setAlphabet(new String[]{"a", "b", "c", "d", "e"});
+        comb.setAlphabet(new Integer[]{1, 2, 3, 4, 5});
+        comb.setCurrentObj(new Integer[k]);
         comb.setPrinter(new ConsolePrinter());
 
         if (recursive) {

@@ -10,14 +10,14 @@ import java.util.Objects;
 /**
  * Комбинаторный объект - сочетание без повторений
  */
-public class CombinationNoRepeat extends BaseCombObject implements NonRecursiveSearch, RecursiveSearch {
+public class CombinationNoRepeat<TypeOfAlphabet> extends BaseCombObject<TypeOfAlphabet> implements NonRecursiveSearch, RecursiveSearch {
 
     @Override
     public boolean genNextObj() {
         int j = getK() - 1;
         int l = 1;
 
-        String[] currentObj = getCurrentObj();
+        TypeOfAlphabet[] currentObj = getCurrentObj();
 
         while ((j >= 0) && (Objects.equals(currentObj[j], getAlphabet()[getN() - l]))) {
             j--;
@@ -41,10 +41,8 @@ public class CombinationNoRepeat extends BaseCombObject implements NonRecursiveS
      */
     @Override
     public void nonRecursivePrintAllObjects() {
-        String[] currentObj = new String[getK()];
-        String[] alphabet = getAlphabet();
-
-        setCurrentObj(currentObj);
+        TypeOfAlphabet[] alphabet = getAlphabet();
+        TypeOfAlphabet[] currentObj = getCurrentObj();
 
         // первые K символов просто переносим в текущее сочетание
         if (getK() >= 0) System.arraycopy(alphabet, 0, currentObj, 0, getK());
@@ -59,7 +57,6 @@ public class CombinationNoRepeat extends BaseCombObject implements NonRecursiveS
      */
     @Override
     public void recursivePrintAllObjects() {
-        setCurrentObj(new String[getK()]);
         recursivePrintAllObjects(0);
     }
 
@@ -73,10 +70,10 @@ public class CombinationNoRepeat extends BaseCombObject implements NonRecursiveS
             return;
         }
 
-        String[] currentComb = getCurrentObj();
-        String[] alphabet = getAlphabet();
+        TypeOfAlphabet[] currentComb = getCurrentObj();
+        TypeOfAlphabet[] alphabet = getAlphabet();
 
-        String startChar = (curPos == 0) ? alphabet[0] : getNextSymbol(currentComb[curPos - 1]);
+        TypeOfAlphabet startChar = (curPos == 0) ? alphabet[0] : getNextSymbol(currentComb[curPos - 1]);
 
         int startNumber = Arrays.binarySearch(alphabet, startChar);
         int finishNumber = n - (k - curPos);

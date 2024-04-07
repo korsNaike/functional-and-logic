@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * Комбинаторный объект - размещение без повторений
  */
-public class PlacementWithRepeats extends BaseCombObject implements NonRecursiveSearch, RecursiveSearch {
+public class PlacementWithRepeats<TypeOfAlphabet> extends BaseCombObject<TypeOfAlphabet> implements NonRecursiveSearch, RecursiveSearch {
 
 
     @Override
@@ -41,7 +41,6 @@ public class PlacementWithRepeats extends BaseCombObject implements NonRecursive
     @Override
     public void nonRecursivePrintAllObjects() {
         // первое размещение просто заполняем первым символом алфавита и выводим
-        setCurrentObj(new String[getK()]);
         for (int i = 0; i < getK(); i++) getCurrentObj()[i] = getAlphabet()[0];
 
         printObject();
@@ -55,7 +54,6 @@ public class PlacementWithRepeats extends BaseCombObject implements NonRecursive
      */
     @Override
     public void recursivePrintAllObjects() {
-        setCurrentObj(new String[getK()]);
         recursivePrintAllObjects(0);
     }
 
@@ -66,7 +64,6 @@ public class PlacementWithRepeats extends BaseCombObject implements NonRecursive
             for (int i = 0; i < getN(); i++) {
                 replaceElementInCurrentObj(getAlphabet()[i], currentKIndex);
                 recursivePrintAllObjects(currentKIndex + 1);
-                replaceElementInCurrentObj("", currentKIndex);
             }
         }
     }
