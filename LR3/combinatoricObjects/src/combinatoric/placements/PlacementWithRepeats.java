@@ -1,6 +1,7 @@
 package combinatoric.placements;
 
 import combinatoric.basic.BaseCombObject;
+import combinatoric.basic.InitialFilling;
 import combinatoric.basic.NonRecursiveSearch;
 import combinatoric.basic.RecursiveSearch;
 
@@ -9,7 +10,7 @@ import java.util.Objects;
 /**
  * Комбинаторный объект - размещение без повторений
  */
-public class PlacementWithRepeats<TypeOfAlphabet> extends BaseCombObject<TypeOfAlphabet> implements NonRecursiveSearch, RecursiveSearch {
+public class PlacementWithRepeats<TypeOfAlphabet> extends BaseCombObject<TypeOfAlphabet> implements NonRecursiveSearch, RecursiveSearch, InitialFilling {
 
 
     @Override
@@ -34,6 +35,10 @@ public class PlacementWithRepeats<TypeOfAlphabet> extends BaseCombObject<TypeOfA
         return true;
     }
 
+    public void initialFill() {
+        for (int i = 0; i < getK(); i++) getCurrentObj()[i] = getAlphabet()[0];
+    }
+
 
     /**
      * Нерекурсивный метод для вывода всех размещений с повторениями
@@ -41,8 +46,7 @@ public class PlacementWithRepeats<TypeOfAlphabet> extends BaseCombObject<TypeOfA
     @Override
     public void nonRecursivePrintAllObjects() {
         // первое размещение просто заполняем первым символом алфавита и выводим
-        for (int i = 0; i < getK(); i++) getCurrentObj()[i] = getAlphabet()[0];
-
+        initialFill();
         printObject();
 
         // Выводим все размещения, пока они существуют

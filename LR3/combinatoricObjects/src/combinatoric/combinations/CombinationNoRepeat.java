@@ -1,6 +1,7 @@
 package combinatoric.combinations;
 
 import combinatoric.basic.BaseCombObject;
+import combinatoric.basic.InitialFilling;
 import combinatoric.basic.NonRecursiveSearch;
 import combinatoric.basic.RecursiveSearch;
 
@@ -10,7 +11,7 @@ import java.util.Objects;
 /**
  * Комбинаторный объект - сочетание без повторений
  */
-public class CombinationNoRepeat<TypeOfAlphabet> extends BaseCombObject<TypeOfAlphabet> implements NonRecursiveSearch, RecursiveSearch {
+public class CombinationNoRepeat<TypeOfAlphabet> extends BaseCombObject<TypeOfAlphabet> implements NonRecursiveSearch, RecursiveSearch, InitialFilling {
 
     @Override
     public boolean genNextObj() {
@@ -41,12 +42,8 @@ public class CombinationNoRepeat<TypeOfAlphabet> extends BaseCombObject<TypeOfAl
      */
     @Override
     public void nonRecursivePrintAllObjects() {
-        TypeOfAlphabet[] alphabet = getAlphabet();
-        TypeOfAlphabet[] currentObj = getCurrentObj();
-
-        // первые K символов просто переносим в текущее сочетание
-        if (getK() >= 0) System.arraycopy(alphabet, 0, currentObj, 0, getK());
-
+        // первые K символов просто переносим в текущее сочетание и выводим
+        initialFill();
         printObject();
 
         printWhileExistNextComb();
@@ -84,5 +81,12 @@ public class CombinationNoRepeat<TypeOfAlphabet> extends BaseCombObject<TypeOfAl
             recursivePrintAllObjects(curPos + 1);
         }
 
+    }
+
+    public void initialFill() {
+        TypeOfAlphabet[] alphabet = getAlphabet();
+        TypeOfAlphabet[] currentObj = getCurrentObj();
+
+        if (getK() >= 0) System.arraycopy(alphabet, 0, currentObj, 0, getK());
     }
 }

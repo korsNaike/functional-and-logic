@@ -1,5 +1,6 @@
 import combinatoric.basic.printers.ConsolePrinter;
 import combinatoric.combinations.CombinationNoRepeat;
+import combinatoric.complex.typeimplementations.WordWithLetterRepeatString;
 import combinatoric.placements.PlacementWithRepeats;
 
 
@@ -8,8 +9,9 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello and welcome!");
 
-        testPlacementWithRepeats(false);
+        //testPlacementWithRepeats(false);
         // testCombinationNoRepeat(true);
+        testWordWithLetterRepeat();
     }
 
     public static void testPlacementWithRepeats(boolean recursive)
@@ -46,5 +48,19 @@ public class Main {
             comb.nonRecursivePrintAllObjects();
         }
 
+    }
+
+    public static void testWordWithLetterRepeat()
+    {
+        WordWithLetterRepeatString wordComb = new WordWithLetterRepeatString();
+
+        wordComb.setK(6);
+        wordComb.setN(6);
+        wordComb.setRepeatLetter("a");
+        wordComb.setCountOfRepeat(3);
+        wordComb.setAlphabet(new String[]{"a", "b", "c", "d", "e", "f"});
+        wordComb.setPrinter(new ConsolePrinter());
+
+        wordComb.nonRecursivePrintAllObjects();
     }
 }
