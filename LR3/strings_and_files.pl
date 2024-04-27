@@ -131,7 +131,10 @@ replace(N, [X|Xs], Value, [X|Ys]) :-
 read_words(String, Words) :-
     read_words(String, [], Words).
 
-read_words([], Words, Words) :- !.
+read_words([], [FirstWord|TailWords], Words) :-  
+    reverse(FirstWord, FixedFirstWord), % фиксим, что у последнего слова обратный порядок букв
+    reverse([FixedFirstWord|TailWords], Words), % фиксим, что слова стоят в обратном порядке
+    !.
 read_words([C|Cs], Acc, Words) :-
     (is_word_char(C) ->
         read_word(Cs, [C], RestCs, Word),
@@ -177,3 +180,44 @@ most_offen_word_in_file(FilePath, Result):-
     read_all_words(StringList, Words),
     count_elements(Words, UniqueWords, CountWords),
     get_max_count_element(UniqueWords, CountWords, Result), !.
+
+% get_unique_words(+Elements, +Counts, -UniqueWords) - получить список всех неповторяющихся слов
+get_unique_words(Elements, Counts, UniqueWords):- get_unique_words(Elements, Counts, [], UniqueWords), !. 
+get_unique_words([], _, UniqueWords, UniqueWords):- !.
+get_unique_words([Element|TailElements], [CountElement|TailCounts], CurUniqueWords, UniqueWords):-
+    CountElement is 1,
+    get_unique_words(TailElements, TailCounts, [Element|CurUniqueWords], UniqueWords), !.
+get_unique_words([_|TailElements], [_|TailCounts], CurUniqueWords, UniqueWords):-
+    get_unique_words(TailElements, TailCounts, CurUniqueWords, UniqueWords), !.
+
+% print_string_unique_words(+String, +UniqueWords) - напечатать строку из уникальных слов
+print_string_unique_words(String, UniqueWords):-
+    read_words(String, WordsInString),
+    print_words_if_unique(WordsInString, UniqueWords), !.
+
+% print_words_if_unique(+Words, +UniqueWords) - напечатать все уникальные слова
+print_words_if_unique([], _):- !.
+print_words_if_unique([Word|TailWords], UniqueWords):-
+    member(Word, UniqueWords),
+    write_list_str(Word),
+    write(" "),
+    print_words_if_unique(TailWords, UniqueWords), !.
+print_words_if_unique([_|TailWords], UniqueWords):-
+    print_words_if_unique(TailWords, UniqueWords), !.
+
+% print_strings_unique_words(+Strings, +UniqueWords) - напечатать все строки, состоящие только из уникальных слов
+print_strings_unique_words([], _):- !.
+print_strings_unique_words([String|TailStrings], UniqueWords):-
+    print_string_unique_words(String, UniqueWords),
+    nl,
+    print_strings_unique_words(TailStrings, UniqueWords), !.
+
+% print_strings_with_only_unique_words(+FilePath, +OutputFile) - записать в файл OutputFile строки с только уникальными словами из файла FilePath
+print_strings_with_only_unique_words(FilePath, OutputFile):-
+    read_file_strings_in_list(FilePath, StringList),
+    read_all_words(StringList, Words),
+    count_elements(Words, SetWords, CountWords),
+    get_unique_words(SetWords, CountWords, UniqueWords),
+    tell(OutputFile),
+    print_strings_unique_words(StringList, UniqueWords),
+    told, !.
