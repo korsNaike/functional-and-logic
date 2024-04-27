@@ -104,3 +104,76 @@ print_more_mean_a_in_file(FilePath):-
     read_file_strings_in_list(FilePath, StringList),
     count_mean_a_in_list_strings(StringList, MeanA),
     print_more_count_a(StringList, MeanA), !.
+    
+% count_elements(+List, -L1, -L2) - вывести в L1 уникальные элементы списка List, а в L2 количество повторений каждого элемента
+count_elements([], [], []).
+
+count_elements([X|Xs], L1, L2) :-
+    count_elements(Xs, L1_Tail, L2_Tail),
+    (   member(X, L1_Tail)
+    ->  L1 = L1_Tail,
+        nth1(Index, L1_Tail, X),
+        nth1(Index, L2_Tail, Count),
+        NewCount is Count + 1,
+        replace(Index, L2_Tail, NewCount, L2)
+    ;   L1 = [X|L1_Tail],
+        L2 = [1|L2_Tail]
+    ).
+
+% replace(+Index, +CurList, +Value, -ResList) - заменить элемент на индексе Index в списке CurList значением Value и вернуть новый список в ResList
+replace(1, [_|Xs], Value, [Value|Xs]).
+replace(N, [X|Xs], Value, [X|Ys]) :-
+    N > 1,
+    N1 is N - 1,
+    replace(N1, Xs, Value, Ys).
+
+% read_words(+String, -Words) - записать все слова из String в Words
+read_words(String, Words) :-
+    read_words(String, [], Words).
+
+read_words([], Words, Words) :- !.
+read_words([C|Cs], Acc, Words) :-
+    (is_word_char(C) ->
+        read_word(Cs, [C], RestCs, Word),
+        Acc1 = [Word|Acc],
+        read_words(RestCs, Acc1, Words)
+    ;
+        read_words(Cs, Acc, Words)
+    ).
+
+% read_word(+Chars, +Acc, -RestCs, -Word) - идти по символам и записывать слово, в Word записать получившееся слово, в RestCs вернуть оставшиеся символы, которые уже не являются частью слова
+read_word([], Word, [], Word) :- !.
+read_word([C|Cs], Acc, RestCs, Word) :-
+    (is_word_char(C) ->
+        read_word(Cs, [C|Acc], RestCs, Word)
+    ;
+        reverse(Acc, Word),
+        RestCs = [C|Cs]
+    ).
+
+% is_word_char(+C) - проверка, является ли C буквой
+is_word_char(C) :-
+    code_type(C, alpha).
+
+% get_max_count_element(+Elements, +Counts, -Result) - получить в Result элемент с наибольшим количеством повторов
+get_max_count_element(Elements, Counts, Result):-
+    max_list(Counts, MaxCount),
+    nth1(IndexMaxCount, Counts, MaxCount),
+    nth1(IndexMaxCount, Elements, MaxCountWord),
+    append([], MaxCountWord, Result), !. % записываем результат через append, так как через is нельзя присваивать список
+
+% read_all_words(Strings, Words) - считать все слова в списке строк 
+read_all_words(Strings, Words):- read_all_words(Strings, [], Words), !.
+read_all_words([], Words, Words):- !.
+read_all_words([String|StringsTail], CurWords, Words):- 
+    read_words(String, StringWords), 
+    append(CurWords, StringWords, NewCurWords),
+    read_all_words(StringsTail, NewCurWords, Words), !.
+
+% most_offen_word_in_file(+FilePath) - найти наиболее часто повторяющееся слово в файле
+most_offen_word_in_file(FilePath):- most_offen_word_in_file(FilePath, Result), write("Result: "), write_list_str(Result), !.
+most_offen_word_in_file(FilePath, Result):-
+    read_file_strings_in_list(FilePath, StringList),
+    read_all_words(StringList, Words),
+    count_elements(Words, UniqueWords, CountWords),
+    get_max_count_element(UniqueWords, CountWords, Result), !.
