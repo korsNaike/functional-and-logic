@@ -54,3 +54,17 @@ max_length_in_list([String|TailListOfStrings], CurrentMax, MaxLength):-
 
 % find_max_length_string_in_file(+FilePath, -MaxLength) - получить максимальную длину строки в файле
 find_max_length_string_in_file(FilePath, MaxLength):- read_file_strings_in_list(FilePath, StringList), max_length_in_list(StringList, MaxLength), !.
+
+% string_has_space(+String) - есть ли в строке/списке символов символ пробела
+string_has_space([]):- !, fail.
+string_has_space([HeadString|_]):- char_code(HeadString, SymbolCode), SymbolCode is 32, !.
+string_has_space([_|TailString]):- string_has_space(TailString).
+
+% count_strings_with_spaces(+ListStrings, -Result) - посчитать количество строк без пробелов в списке строк
+count_strings_without_spaces(ListStrings, Result):- count_strings_without_spaces(ListStrings, 0, Result), !.
+count_strings_without_spaces([], Result, Result):- !.
+count_strings_without_spaces([String|TailStrings], CurCount, Result):- string_has_space(String), count_strings_without_spaces(TailStrings, CurCount, Result), !.
+count_strings_without_spaces([_|TailStrings], CurCount, Result):- NewCurCount is CurCount + 1, count_strings_without_spaces(TailStrings, NewCurCount, Result), !.
+
+% count_strings_without_spaces_in_file(+FilePath, -Count) - посчитать количество строк без пробелов в файле
+count_strings_without_spaces_in_file(FilePath, Count):- read_file_strings_in_list(FilePath, StringList), count_strings_without_spaces(StringList, Count).

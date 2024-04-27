@@ -4,19 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07b4de30-e75a-47ec-8f95-88b20a2147f0" name="Changes" comment="unit test">
-      <change beforePath="$PROJECT_DIR$/../kotlin/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kotlin/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kotlin/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kotlin/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kotlin/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kotlin/.idea/kotlinc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kotlin/.idea/libraries/KotlinJavaRuntime.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kotlin/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kotlin/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kotlin/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kotlin/kotlin.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kotlin/src/Main.kt" beforeDir="false" />
+    <list default="true" id="07b4de30-e75a-47ec-8f95-88b20a2147f0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +118,7 @@
       <updated>1714053288107</updated>
       <workItem from="1714053289441" duration="7826000" />
       <workItem from="1714217597452" duration="1627000" />
-      <workItem from="1714219305321" duration="26000" />
+      <workItem from="1714219305321" duration="1434000" />
     </task>
     <task id="LOCAL-00001" summary="function max">
       <created>1714054938016</created>
@@ -166,7 +155,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714059597078</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ЛР5. Задание 1. Сумма цифр в числе, максимальное число, факториал">
+      <option name="closed" value="true" />
+      <created>1714219468372</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1714219468372</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,6 +190,7 @@
     <MESSAGE value="high order function + lambda" />
     <MESSAGE value="sum numbers down" />
     <MESSAGE value="unit test" />
-    <option name="LAST_COMMIT_MESSAGE" value="unit test" />
+    <MESSAGE value="ЛР5. Задание 1. Сумма цифр в числе, максимальное число, факториал" />
+    <option name="LAST_COMMIT_MESSAGE" value="ЛР5. Задание 1. Сумма цифр в числе, максимальное число, факториал" />
   </component>
 </project>
