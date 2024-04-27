@@ -1,5 +1,7 @@
 11 12 3123 123 123 123 414551 1564 lalaal la la
 la la la 123 ala
+stringwithmanycountofletterA,how many A in this string, idk, AAAA AAA
 stringwithoutspace
 string with space
 nononono
+AAAAAAAAAAAAAAAAA

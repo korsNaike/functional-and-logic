@@ -68,3 +68,39 @@ count_strings_without_spaces([_|TailStrings], CurCount, Result):- NewCurCount is
 
 % count_strings_without_spaces_in_file(+FilePath, -Count) - посчитать количество строк без пробелов в файле
 count_strings_without_spaces_in_file(FilePath, Count):- read_file_strings_in_list(FilePath, StringList), count_strings_without_spaces(StringList, Count).
+
+% count_a_in_string(+String, -Result) - записать в Result кол-во символов A в строке
+count_a_in_string(String, Result):- count_a_in_string(String, 0, Result), !.
+count_a_in_string([], Result, Result):- !.
+count_a_in_string([Symbol|TailString], CurCount, Result):- 
+    char_code(Symbol, SymbolCode), 
+    SymbolCode is 65, 
+    NewCount is CurCount + 1, 
+    count_a_in_string(TailString, NewCount, Result), !.
+count_a_in_string([_|TailString], CurCount, Result):- count_a_in_string(TailString, CurCount, Result), !.
+
+% count_mean_a_in_list_strings(+ListStrings, -Result) - записать в Result среднее количество символов A на строку в файле
+count_mean_a_in_list_strings(ListStrings, Result):- count_mean_a_in_list_strings(ListStrings, 0, 0, Result), !.
+count_mean_a_in_list_strings([], 0, _, Result):- Result is 0, !.
+count_mean_a_in_list_strings([], CountOfStrings, CountOfA, Result):- Result is CountOfA/CountOfStrings, !.
+count_mean_a_in_list_strings([String|TailStrings], CountOfStrings, CountOfA, Result):- 
+    count_a_in_string(String, ThisCountA),
+    NewCountA is CountOfA + ThisCountA,
+    NewCountOfStrings is CountOfStrings + 1,
+    count_mean_a_in_list_strings(TailStrings, NewCountOfStrings, NewCountA, Result), !.
+
+% print_more_count_a(+StringList, +CountA) - напечатать все строки, в которых количество символов А больше, чем переданный параметр CountA.
+print_more_count_a([], _):- !.
+print_more_count_a([String|TailStrings], CountA):- 
+    count_a_in_string(String, ThisCountA), 
+    ThisCountA > CountA, 
+    write_list_str(String),
+    nl,
+    print_more_count_a(TailStrings, CountA), !.
+print_more_count_a([_|TailStrings], CountA):- print_more_count_a(TailStrings, CountA), !.
+
+% print_more_mean_a_in_file(+FilePath) - напечатать все строки, в которых количество символов А больше, чем среднее кол-во этого символа в строке
+print_more_mean_a_in_file(FilePath):- 
+    read_file_strings_in_list(FilePath, StringList),
+    count_mean_a_in_list_strings(StringList, MeanA),
+    print_more_count_a(StringList, MeanA), !.
