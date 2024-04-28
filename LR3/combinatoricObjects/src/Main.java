@@ -1,6 +1,7 @@
 import combinatoric.basic.printers.ConsolePrinter;
 import combinatoric.basic.printers.FilePrinter;
 import combinatoric.combinations.CombinationNoRepeat;
+import combinatoric.combinations.CombinationWithRepeats;
 import combinatoric.complex.typeimplementations.WordWithLetterRepeatString;
 import combinatoric.placements.PlacementWithRepeats;
 import combinatoric.placements.PlacementWithoutRepeats;
@@ -14,10 +15,11 @@ public class Main {
         System.out.println("Hello and welcome!");
 
         try {
-            testPlacementWithRepeats(false, true);
-            testCombinationNoRepeat(true, true);
-            testWordWithLetterRepeat(true);
-            testPlacemenetsWithoutRepeats(false, true);
+            // testPlacementWithRepeats(false, true);
+            //testCombinationNoRepeat(true, true);
+            //testWordWithLetterRepeat(true);
+            //testPlacemenetsWithoutRepeats(false, true);
+            testCombinationWithRepeats(true, true);
         } catch (IOException exception) {
             System.out.println("404! file not found");
         }
@@ -105,5 +107,23 @@ public class Main {
         } else {
             pl.nonRecursivePrintAllObjects();
         }
+    }
+
+    public static void testCombinationWithRepeats(boolean recursive, boolean toFile) throws IOException {
+        CombinationWithRepeats<String> comb = new CombinationWithRepeats<>();
+
+        int k = 4;
+        comb.setK(k);
+        comb.setN(6);
+        comb.setAlphabet(new String[]{"a", "b", "c", "d", "e", "f"});
+        comb.setCurrentObj(new String[k]);
+        if (!toFile) {
+            comb.setPrinter(new ConsolePrinter());
+        } else {
+            String filePath = "X:\\Prolog\\LR3\\combinatoricObjects\\src\\files\\comb_with_repeats.txt";
+            comb.setPrinter(new FilePrinter(filePath));
+        }
+
+        comb.nonRecursivePrintAllObjects();
     }
 }
