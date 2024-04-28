@@ -33,12 +33,17 @@ public class BaseArrayHelper<TypeOfArray> {
                 continue;
             }
 
-            if (elementDeleted) {
-                newArray[i - 1] = item;
-            } else {
-                newArray[i] = item;
-            }
+            try {
+                if (elementDeleted) {
+                    newArray[i - 1] = item;
+                } else {
+                    newArray[i] = item;
+                }
+            } catch (ArrayIndexOutOfBoundsException exception) {
+                System.out.println(Arrays.toString(array));
+                System.out.println(Arrays.toString(newArray));
 
+            }
         }
 
         return newArray;

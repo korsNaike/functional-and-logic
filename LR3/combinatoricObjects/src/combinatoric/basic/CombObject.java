@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * Базовый класс для комбинаторных объектов
  */
-abstract public class CombObject<TypeOfAlphabet> {
+abstract public class CombObject<TypeOfAlphabet> implements ICombObject{
 
     private TypeOfAlphabet[] alphabet;
 
@@ -82,13 +82,4 @@ abstract public class CombObject<TypeOfAlphabet> {
     public void printObject() {
         printer.printCombObj(this);
     }
-
-    /**
-     * Метод проверяет, можно ли сгенерировать следующий комбинаторный объект,
-     * если можно, то записывает следующий объект в this.currentObj и возвращает true
-     * если нет, то возвращает false
-     *
-     * @return boolean
-     */
-    abstract public boolean genNextObj();
 }

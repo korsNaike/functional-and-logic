@@ -2,6 +2,8 @@ import combinatoric.basic.printers.ConsolePrinter;
 import combinatoric.basic.printers.FilePrinter;
 import combinatoric.combinations.CombinationNoRepeat;
 import combinatoric.combinations.CombinationWithRepeats;
+import combinatoric.complex.typeimplementations.Word2LetterRepeatString;
+import combinatoric.complex.typeimplementations.WordOneLetterRepeat;
 import combinatoric.complex.typeimplementations.WordWithLetterRepeatString;
 import combinatoric.placements.PlacementWithRepeats;
 import combinatoric.placements.PlacementWithoutRepeats;
@@ -15,14 +17,34 @@ public class Main {
         System.out.println("Hello and welcome!");
 
         try {
-            // testPlacementWithRepeats(false, true);
-            //testCombinationNoRepeat(true, true);
+//            testPlacementWithRepeats(false, true);
+//            testCombinationNoRepeat(true, true);
+//            testPlacemenetsWithoutRepeats(false, true);
+//            testCombinationWithRepeats(true, true);
+//            testWord3A(true);
+            testWordWith2LetterRepeat(true);
             //testWordWithLetterRepeat(true);
-            //testPlacemenetsWithoutRepeats(false, true);
-            testCombinationWithRepeats(true, true);
         } catch (IOException exception) {
             System.out.println("404! file not found");
         }
+    }
+
+    public static void testWord3A(boolean toFile) throws IOException {
+        WordOneLetterRepeat wordComb = new WordOneLetterRepeat();
+
+        wordComb.setK(6);
+        wordComb.setN(6);
+        wordComb.setRepeatLetter("a");
+        wordComb.setCountOfRepeat(3);
+        wordComb.setAlphabet(new String[]{"a", "b", "c", "d", "e", "f"});
+        if (!toFile) {
+            wordComb.setPrinter(new ConsolePrinter());
+        } else {
+            String filePath = "X:\\Prolog\\LR3\\combinatoricObjects\\src\\files\\word3a.txt";
+            wordComb.setPrinter(new FilePrinter(filePath));
+        }
+
+        wordComb.nonRecursivePrintAllObjects();
     }
 
     public static void testPlacementWithRepeats(boolean recursive, boolean toFile) throws IOException {
@@ -74,13 +96,30 @@ public class Main {
 
         wordComb.setK(6);
         wordComb.setN(6);
-        wordComb.setRepeatLetter("a");
-        wordComb.setCountOfRepeat(3);
+        wordComb.setCountOfRepeat(2);
         wordComb.setAlphabet(new String[]{"a", "b", "c", "d", "e", "f"});
         if (!toFile) {
             wordComb.setPrinter(new ConsolePrinter());
         } else {
             String filePath = "X:\\Prolog\\LR3\\combinatoricObjects\\src\\files\\word_with_letter_repeat.txt";
+            wordComb.setPrinter(new FilePrinter(filePath));
+        }
+
+        wordComb.nonRecursivePrintAllObjects();
+    }
+
+    public static void testWordWith2LetterRepeat(boolean toFile) throws IOException {
+        Word2LetterRepeatString wordComb = new Word2LetterRepeatString();
+
+        wordComb.setK(6);
+        wordComb.setN(6);
+        wordComb.setCountOfRepeat(2);
+        wordComb.setCountOfSecondRepeat(2);
+        wordComb.setAlphabet(new String[]{"a", "b", "c", "d", "e", "f"});
+        if (!toFile) {
+            wordComb.setPrinter(new ConsolePrinter());
+        } else {
+            String filePath = "X:\\Prolog\\LR3\\combinatoricObjects\\src\\files\\word_with_2_letter_repeat.txt";
             wordComb.setPrinter(new FilePrinter(filePath));
         }
 

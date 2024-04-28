@@ -4,12 +4,26 @@ import combinatoric.combinations.CombinationNoRepeat;
 import combinatoric.complex.WordWithLetterRepeat;
 import combinatoric.helpers.ArrayHelper;
 import combinatoric.placements.PlacementWithRepeats;
-import combinatoric.placements.PlacementWithoutRepeats;
 
 /**
- * Реализация WordWithLetterRepeat для строкового типа данных
+ * Реализация класса для вывода слов, где повторяется лишь одна, выбранная буква
+ * Например, вывод слова, где буква "а" повторяется 3 раза
  */
-public class WordWithLetterRepeatString extends WordWithLetterRepeat<String> {
+public class WordOneLetterRepeat extends WordWithLetterRepeat<String> {
+
+    @Override
+    public void nonRecursivePrintAllObjects() {
+        //создание вспомогательных объектов происходит в init
+        init();
+
+        //заполнение начальных данных и вывод
+        getPositionsComb().initialFill();
+        getPlacementComb().initialFill();
+        fillByPositionsAndPlacements();
+        printObject();
+
+        printWhileExistNextComb();
+    }
 
     @Override
     public void init() {
@@ -27,7 +41,7 @@ public class WordWithLetterRepeatString extends WordWithLetterRepeat<String> {
         setPositionsComb(positions);
 
         //инициализация объекта для расстановок букв
-        PlacementWithoutRepeats<String> placements = new PlacementWithoutRepeats<>();
+        PlacementWithRepeats<String> placements = new PlacementWithRepeats<>();
         placements.setK(k - getCountOfRepeat());
         placements.setAlphabet(ArrayHelper.removeElement(alphabet, getRepeatLetter()));
         placements.setN(placements.getAlphabet().length);

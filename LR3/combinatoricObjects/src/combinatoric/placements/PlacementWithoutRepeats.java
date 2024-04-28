@@ -8,7 +8,7 @@ import combinatoric.basic.RecursiveSearch;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class PlacementWithoutRepeats<TypeOfAlphabet> extends BaseCombObject<TypeOfAlphabet> implements NonRecursiveSearch, RecursiveSearch, InitialFilling {
+public class PlacementWithoutRepeats<TypeOfAlphabet> extends BaseCombObject<TypeOfAlphabet> implements IPlacement {
 
     /**
      * Получить следующий символ, учитывая те, что уже есть в размещении

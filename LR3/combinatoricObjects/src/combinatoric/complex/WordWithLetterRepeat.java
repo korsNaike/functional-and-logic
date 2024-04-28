@@ -4,6 +4,7 @@ import combinatoric.basic.BaseCombObject;
 import combinatoric.basic.NonRecursiveSearch;
 import combinatoric.combinations.CombinationNoRepeat;
 import combinatoric.helpers.ArrayHelper;
+import combinatoric.placements.IPlacement;
 import combinatoric.placements.PlacementWithRepeats;
 
 abstract public class WordWithLetterRepeat<TypeOfAlphabet> extends BaseCombObject<TypeOfAlphabet> implements NonRecursiveSearch {
@@ -12,7 +13,8 @@ abstract public class WordWithLetterRepeat<TypeOfAlphabet> extends BaseCombObjec
     private int countOfRepeat;
 
     private CombinationNoRepeat<Integer> positionsComb;
-    private PlacementWithRepeats<TypeOfAlphabet> placementComb;
+
+    private IPlacement<TypeOfAlphabet> placementComb;
 
     public void setRepeatLetter(TypeOfAlphabet repeatLetter) {
         this.repeatLetter = repeatLetter;
@@ -34,32 +36,41 @@ abstract public class WordWithLetterRepeat<TypeOfAlphabet> extends BaseCombObjec
         this.positionsComb = positionsComb;
     }
 
-    public void setPlacementComb(PlacementWithRepeats<TypeOfAlphabet> placementComb) {
+    public void setPlacementComb(IPlacement<TypeOfAlphabet> placementComb) {
         this.placementComb = placementComb;
+    }
+
+    public IPlacement<TypeOfAlphabet> getPlacementComb() {
+        return placementComb;
+    }
+
+    public CombinationNoRepeat<Integer> getPositionsComb() {
+        return positionsComb;
     }
 
     @Override
     public boolean genNextObj() {
-        if (!placementComb.genNextObj()) {
-            if (!positionsComb.genNextObj()) {
-                return false;
-            } else {
-                //если не удалось сформировать перестановку, но удалось сформировать след сочетание позиций
-                placementComb.initialFill(); // - заново заполняем размещения остальных букв
-                fillByPositionsAndPlacements();
-            }
-        } else {
+
+        if (placementComb.genNextObj()) {
             //если удалось сформировать след перестановку, то расставляем символы
             fillByPositionsAndPlacements();
+            return true;
         }
 
-        return true;
+        if (positionsComb.genNextObj()) {
+            //если не удалось сформировать перестановку, но удалось сформировать след сочетание позиций
+            placementComb.initialFill(); // - заново заполняем размещения остальных букв
+            fillByPositionsAndPlacements();
+            return true;
+        }
+
+        return false;
     }
 
     /**
      * Заполнить текущий объект на основе позиций и размещений
      */
-    private void fillByPositionsAndPlacements() {
+    protected void fillByPositionsAndPlacements() {
         TypeOfAlphabet[] lettersForPlacement = placementComb.getCurrentObj();
         Integer[] busyPositions = positionsComb.getCurrentObj();
         TypeOfAlphabet[] currentObj = getCurrentObj();
@@ -77,16 +88,19 @@ abstract public class WordWithLetterRepeat<TypeOfAlphabet> extends BaseCombObjec
 
     @Override
     public void nonRecursivePrintAllObjects() {
-        //создание вспомогательных объектов происходит в init
-        init();
+        for (int i = 0; i < getN(); i++) {
+            setRepeatLetter(getAlphabet()[i]);
+            //создание вспомогательных объектов происходит в init
+            init();
 
-        //заполнение начальных данных и вывод
-        positionsComb.initialFill();
-        placementComb.initialFill();
-        fillByPositionsAndPlacements();
-        printObject();
+            //заполнение начальных данных и вывод
+            positionsComb.initialFill();
+            placementComb.initialFill();
+            fillByPositionsAndPlacements();
+            printObject();
 
-        printWhileExistNextComb();
+            printWhileExistNextComb();
+        }
     }
 
     /**

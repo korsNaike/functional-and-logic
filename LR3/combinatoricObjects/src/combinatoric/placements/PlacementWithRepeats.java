@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * Комбинаторный объект - размещение без повторений
  */
-public class PlacementWithRepeats<TypeOfAlphabet> extends BaseCombObject<TypeOfAlphabet> implements NonRecursiveSearch, RecursiveSearch, InitialFilling {
+public class PlacementWithRepeats<TypeOfAlphabet> extends BaseCombObject<TypeOfAlphabet> implements IPlacement {
 
 
     @Override
