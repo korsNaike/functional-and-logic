@@ -4,10 +4,13 @@ import combinatoric.basic.NonRecursiveSearch;
 import combinatoric.combinations.CombinationNoRepeat;
 import combinatoric.helpers.ArrayHelper;
 import combinatoric.placements.IPlacement;
-import combinatoric.placements.PlacementWithRepeats;
 
 import java.util.Objects;
 
+/**
+ * Класс для нахождения всех возможных слов, где 2 буквы повторяются определённое кол-во раз
+ * @param <TypeOfAlphabet>
+ */
 abstract public class WordWithTwoLetterRepeat<TypeOfAlphabet> extends WordWithLetterRepeat<TypeOfAlphabet> implements NonRecursiveSearch {
 
 
@@ -74,6 +77,7 @@ abstract public class WordWithTwoLetterRepeat<TypeOfAlphabet> extends WordWithLe
     /**
      * Заполнить текущий объект на основе позиций и размещений
      */
+    @Override
     protected void fillByPositionsAndPlacements() {
         TypeOfAlphabet[] lettersForPlacement = getPlacementComb().getCurrentObj();
         Integer[] firstPositions = getPositionsComb().getCurrentObj();

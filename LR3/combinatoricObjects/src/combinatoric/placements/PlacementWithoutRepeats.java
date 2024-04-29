@@ -1,14 +1,11 @@
 package combinatoric.placements;
 
-import combinatoric.basic.BaseCombObject;
-import combinatoric.basic.InitialFilling;
-import combinatoric.basic.NonRecursiveSearch;
-import combinatoric.basic.RecursiveSearch;
+import combinatoric.basic.*;
 
 import java.util.Arrays;
 import java.util.Objects;
 
-public class PlacementWithoutRepeats<TypeOfAlphabet> extends BaseCombObject<TypeOfAlphabet> implements IPlacement {
+public class PlacementWithoutRepeats<TypeOfAlphabet> extends CombObject<TypeOfAlphabet> implements IPlacement<TypeOfAlphabet> {
 
     /**
      * Получить следующий символ, учитывая те, что уже есть в размещении

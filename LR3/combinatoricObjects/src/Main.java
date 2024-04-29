@@ -17,13 +17,13 @@ public class Main {
         System.out.println("Hello and welcome!");
 
         try {
-//            testPlacementWithRepeats(false, true);
-//            testCombinationNoRepeat(true, true);
-//            testPlacemenetsWithoutRepeats(false, true);
-//            testCombinationWithRepeats(true, true);
-//            testWord3A(true);
+            testPlacementWithRepeats(false, true);
+            testCombinationNoRepeat(true, true);
+            testPlacemenetsWithoutRepeats(false, true);
+            testCombinationWithRepeats(true, true);
+            testWord3A(true);
             testWordWith2LetterRepeat(true);
-            //testWordWithLetterRepeat(true);
+            testWordWithLetterRepeat(true);
         } catch (IOException exception) {
             System.out.println("404! file not found");
         }

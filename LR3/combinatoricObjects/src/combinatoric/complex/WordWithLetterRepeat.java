@@ -1,13 +1,16 @@
 package combinatoric.complex;
 
-import combinatoric.basic.BaseCombObject;
+import combinatoric.basic.CombObject;
 import combinatoric.basic.NonRecursiveSearch;
 import combinatoric.combinations.CombinationNoRepeat;
 import combinatoric.helpers.ArrayHelper;
 import combinatoric.placements.IPlacement;
-import combinatoric.placements.PlacementWithRepeats;
 
-abstract public class WordWithLetterRepeat<TypeOfAlphabet> extends BaseCombObject<TypeOfAlphabet> implements NonRecursiveSearch {
+/**
+ * Класс для нахождения всех возможных слов, где 1 буква повторяется определённое кол-во раз
+ * @param <TypeOfAlphabet>
+ */
+abstract public class WordWithLetterRepeat<TypeOfAlphabet> extends CombObject<TypeOfAlphabet> implements NonRecursiveSearch {
 
     private TypeOfAlphabet repeatLetter;
     private int countOfRepeat;

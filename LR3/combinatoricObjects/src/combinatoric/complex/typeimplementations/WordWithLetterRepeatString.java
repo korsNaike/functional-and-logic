@@ -8,6 +8,7 @@ import combinatoric.placements.PlacementWithoutRepeats;
 
 /**
  * Реализация WordWithLetterRepeat для строкового типа данных
+ * Например, вывод всех слов, где ровно 1 буква повторяется 2 раза, остальные не повторяются
  */
 public class WordWithLetterRepeatString extends WordWithLetterRepeat<String> {
 

@@ -1,13 +1,10 @@
 package combinatoric.combinations;
 
-import combinatoric.basic.BaseCombObject;
-import combinatoric.basic.InitialFilling;
-import combinatoric.basic.NonRecursiveSearch;
-import combinatoric.basic.RecursiveSearch;
+import combinatoric.basic.*;
 
 import java.util.Objects;
 
-public class CombinationWithRepeats<TypeOfAlphabet> extends BaseCombObject<TypeOfAlphabet> implements NonRecursiveSearch, RecursiveSearch, InitialFilling {
+public class CombinationWithRepeats<TypeOfAlphabet> extends CombObject<TypeOfAlphabet> implements ICombination<TypeOfAlphabet> {
     @Override
     public boolean genNextObj() {
         TypeOfAlphabet[] currentObj = getCurrentObj();

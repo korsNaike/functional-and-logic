@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * Базовый класс для комбинаторных объектов
  */
-abstract public class CombObject<TypeOfAlphabet> implements ICombObject{
+abstract public class CombObject<TypeOfAlphabet> implements ICombObject<TypeOfAlphabet>{
 
     private TypeOfAlphabet[] alphabet;
 
@@ -81,5 +81,19 @@ abstract public class CombObject<TypeOfAlphabet> implements ICombObject{
      */
     public void printObject() {
         printer.printCombObj(this);
+    }
+
+    private int k;
+
+    public int getK() {
+        return k;
+    }
+
+    public void setK(int k) {
+        this.k = k;
+    }
+
+    protected void printWhileExistNextComb() {
+        while (genNextObj()) printObject();
     }
 }

@@ -1,16 +1,13 @@
 package combinatoric.placements;
 
-import combinatoric.basic.BaseCombObject;
-import combinatoric.basic.InitialFilling;
-import combinatoric.basic.NonRecursiveSearch;
-import combinatoric.basic.RecursiveSearch;
+import combinatoric.basic.*;
 
 import java.util.Objects;
 
 /**
  * Комбинаторный объект - размещение без повторений
  */
-public class PlacementWithRepeats<TypeOfAlphabet> extends BaseCombObject<TypeOfAlphabet> implements IPlacement {
+public class PlacementWithRepeats<TypeOfAlphabet> extends CombObject<TypeOfAlphabet> implements IPlacement<TypeOfAlphabet> {
 
 
     @Override

@@ -1,9 +1,6 @@
 package combinatoric.combinations;
 
-import combinatoric.basic.BaseCombObject;
-import combinatoric.basic.InitialFilling;
-import combinatoric.basic.NonRecursiveSearch;
-import combinatoric.basic.RecursiveSearch;
+import combinatoric.basic.CombObject;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -11,7 +8,7 @@ import java.util.Objects;
 /**
  * Комбинаторный объект - сочетание без повторений
  */
-public class CombinationNoRepeat<TypeOfAlphabet> extends BaseCombObject<TypeOfAlphabet> implements NonRecursiveSearch, RecursiveSearch, InitialFilling {
+public class CombinationNoRepeat<TypeOfAlphabet> extends CombObject<TypeOfAlphabet> implements ICombination<TypeOfAlphabet> {
 
     @Override
     public boolean genNextObj() {
