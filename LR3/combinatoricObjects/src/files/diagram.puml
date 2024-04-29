@@ -1,0 +1,182 @@
+@startuml
+
+abstract "CombObject<TypeOfAlphabet>" as CombObject {
+  -TypeOfAlphabet[] alphabet
+  -int n
+  -int k
+  -TypeOfAlphabet[] currentObj
+  -CombObjPrinter printer
+  +void setN(int n)
+  +int getN()
+  +int getK()
+  +void setK(int k)
+  +void setAlphabet(TypeOfAlphabet[] alphabet)
+  +TypeOfAlphabet[] getAlphabet()
+  +TypeOfAlphabet[] getCurrentObj()
+  +void setCurrentObj(TypeOfAlphabet[] currentObj)
+  +CombObjPrinter getPrinter()
+  +void setPrinter(CombObjPrinter printer)
+  +void replaceElementInCurrentObj(TypeOfAlphabet value, int index)
+  +TypeOfAlphabet getNextSymbol(TypeOfAlphabet curAlphabetValue)
+  +void printObject()
+  #void printWhileExistNextComb()
+}
+
+interface "ICombObject<TypeOfAlphabet>" as ICombObject {
+  + boolean genNextObj()
+  + TypeOfAlphabet[] getAlphabet()
+  + void setAlphabet(TypeOfAlphabet[] alphabet)
+  + TypeOfAlphabet[] getCurrentObj()
+  + void setCurrentObj(TypeOfAlphabet[] currentObj)
+  + void setN(int n)
+  + int getN()
+  + int getK()
+  + void setK(int k)
+}
+
+CombObject ..|> ICombObject
+
+interface CombObjectPrinter {
+  +void printCombObj(CombObject combObject)
+}
+
+class ConsolePrinter
+
+class FilePrinter
+
+FilePrinter ..|> CombObjectPrinter
+ConsolePrinter ..|> CombObjectPrinter
+CombObjectPrinter --o CombObject
+
+interface InitialFilling {
+  +void initialFill()
+}
+
+interface NonRecursiveSearch {
+  +void nonRecursivePrintAllObjects()
+}
+
+interface RecursiveSearch {
+  +void recursivePrintAllObjects()
+}
+
+interface ICombination
+
+ICombination <|-- InitialFilling
+ICombination <|-- NonRecursiveSearch
+ICombination <|-- RecursiveSearch
+ICombination <|-- ICombObject
+
+interface IPlacement
+
+IPlacement <|-- InitialFilling
+IPlacement <|-- NonRecursiveSearch
+IPlacement <|-- RecursiveSearch
+IPlacement <|-- ICombObject
+
+class "PlacementWithoutRepeats<TypeOfAlphabet>" as PlacementWithoutRepeats {
+  + TypeOfAlphabet getNextSymbol(TypeOfAlphabet curSymbol)
+  + TypeOfAlphabet findMaxFreeSymbol(int positionInCurObj)
+  + boolean genNextObj()
+  + void nonRecursivePrintAllObjects()
+  + void initialFill()
+  + void recursivePrintAllObjects()
+  - void recursivePrintAllObjects(int currentKIndex)
+}
+
+class "PlacementWithRepeats<TypeOfAlphabet>" as PlacementWithRepeats {
+  + boolean genNextObj()
+  + void initialFill()
+  + void nonRecursivePrintAllObjects()
+  + void recursivePrintAllObjects()
+  - void recursivePrintAllObjects(int currentKIndex)
+}
+
+PlacementWithRepeats ..|> IPlacement
+PlacementWithoutRepeats ..|> IPlacement
+
+class "CombinationNoRepeat<TypeOfAlphabet>" as CombinationNoRepeat {
+  + boolean genNextObj()
+  + void initialFill()
+  + void nonRecursivePrintAllObjects()
+  + void recursivePrintAllObjects()
+  - void recursivePrintAllObjects(int currentKIndex)
+}
+
+class "CombinationWithRepeats<TypeOfAlphabet>" as CombinationWithRepeats {
+  + boolean genNextObj()
+  + void initialFill()
+  + void nonRecursivePrintAllObjects()
+  + void recursivePrintAllObjects()
+  - void recursivePrintAllObjects(int currentKIndex)
+}
+
+CombinationNoRepeat ..|> ICombination
+CombinationWithRepeats ..|> ICombination
+
+CombinationNoRepeat --|> CombObject
+CombinationWithRepeats --|> CombObject
+PlacementWithoutRepeats --|> CombObject
+PlacementWithRepeats --|> CombObject
+
+abstract "WordWithLetterRepeat<TypeOfAlphabet>" as WordWithLetterRepeat {
+  - TypeOfAlphabet repeatLetter
+  - int countOfRepeat
+  - CombinationNoRepeat<Integer> positionsComb
+  - IPlacement<TypeOfAlphabet> placementComb
+
+  + void setRepeatLetter(TypeOfAlphabet repeatLetter)
+  + TypeOfAlphabet getRepeatLetter()
+  + int getCountOfRepeat()
+  + void setCountOfRepeat(int countOfRepeat)
+  + void setPositionsComb(CombinationNoRepeat<Integer> positionsComb)
+  + void setPlacementComb(IPlacement<TypeOfAlphabet> placementComb)
+  + IPlacement<TypeOfAlphabet> getPlacementComb()
+  + CombinationNoRepeat<Integer> getPositionsComb()
+  + boolean genNextObj()
+  # void fillByPositionsAndPlacements()
+  + void nonRecursivePrintAllObjects()
+  + void init()
+  + Integer[] createAplhabetOfPositions()
+}
+
+WordWithLetterRepeat --|> CombObject
+
+abstract WordWithTwoLetterRepeat<TypeOfAlphabet> {
+  - TypeOfAlphabet secondRepeatLetter
+  - int countOfSecondRepeat
+  - CombinationNoRepeat<Integer> secondPositionsComb
+
+  + void setSecondRepeatLetter(TypeOfAlphabet secondRepeatLetter)
+  + TypeOfAlphabet getSecondRepeatLetter()
+  + void setCountOfSecondRepeat(int countOfSecondRepeat)
+  + int getCountOfSecondRepeat()
+  + void setSecondPositionsComb(CombinationNoRepeat<Integer> secondPositionsComb)
+  + CombinationNoRepeat<Integer> getSecondPositionsComb()
+  + boolean genNextObj()
+  # fillByPositionsAndPlacements()
+}
+
+WordWithTwoLetterRepeat --|> WordWithLetterRepeat
+
+class WordOneLetterRepeat {
+  +void nonRecursivePrintAllObjects()
+  +void init()
+}
+
+class WordWithLetterRepeatString {
+  +void init()
+}
+
+class Word2LetterRepeatString {
+  +void init()
+}
+
+WordOneLetterRepeat <|.. WordWithLetterRepeat
+WordWithLetterRepeatString <|.. WordWithLetterRepeat
+Word2LetterRepeatString <|.. WordWithTwoLetterRepeat
+
+WordWithLetterRepeat --o IPlacement
+WordWithLetterRepeat --o CombinationNoRepeat
+
+@enduml

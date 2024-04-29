@@ -12,6 +12,8 @@ abstract public class CombObject<TypeOfAlphabet> implements ICombObject<TypeOfAl
 
     private int n;
 
+    private int k;
+
     private TypeOfAlphabet[] currentObj;
 
     private CombObjPrinter printer;
@@ -22,6 +24,14 @@ abstract public class CombObject<TypeOfAlphabet> implements ICombObject<TypeOfAl
 
     public int getN() {
         return n;
+    }
+
+    public int getK() {
+        return k;
+    }
+
+    public void setK(int k) {
+        this.k = k;
     }
 
     public void setAlphabet(TypeOfAlphabet[] alphabet) {
@@ -46,7 +56,6 @@ abstract public class CombObject<TypeOfAlphabet> implements ICombObject<TypeOfAl
 
     /**
      * Установить экземпляр для вывода комбинаторного объекта
-     * @param printer
      */
     public void setPrinter(CombObjPrinter printer) {
         this.printer = printer;
@@ -81,16 +90,6 @@ abstract public class CombObject<TypeOfAlphabet> implements ICombObject<TypeOfAl
      */
     public void printObject() {
         printer.printCombObj(this);
-    }
-
-    private int k;
-
-    public int getK() {
-        return k;
-    }
-
-    public void setK(int k) {
-        this.k = k;
     }
 
     protected void printWhileExistNextComb() {

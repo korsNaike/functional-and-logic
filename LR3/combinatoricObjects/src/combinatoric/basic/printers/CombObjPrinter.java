@@ -4,6 +4,6 @@ import combinatoric.basic.CombObject;
 
 public interface CombObjPrinter {
 
-    public void printCombObj(CombObject combObject);
+    void printCombObj(CombObject combObject);
 
 }

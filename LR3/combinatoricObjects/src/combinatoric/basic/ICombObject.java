@@ -13,6 +13,17 @@ public interface ICombObject<TypeOfAlphabet> {
 
     TypeOfAlphabet[] getAlphabet();
 
+    void setAlphabet(TypeOfAlphabet[] alphabet);
+
     TypeOfAlphabet[] getCurrentObj();
 
+    void setCurrentObj(TypeOfAlphabet[] currentObj);
+
+    void setN(int n);
+
+    int getN();
+
+    int getK();
+
+    void setK(int k);
 }
