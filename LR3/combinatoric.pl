@@ -207,3 +207,41 @@ all_word6_2_repeat2_file(FilePath, Alphabet):-
   tell(FilePath),
   not(all_word6_2_repeat2(Alphabet)),
   told, !.
+
+% 6 задание
+
+% word_length_n_2_repeat2_1_repeat_k(+Alphabet, +N, +K, Word) - построить слово длины n, где ровно 2 буквы повторяются 2 раза, 1 буква повторяется k раз, остальные не повторяются
+word_length_n_2_repeat2_1_repeat_k(Alphabet, N, K, Word):-
+  select(RepeatLetter, Alphabet, AlphabetWithoutRepLetter), % выбираем первую букву, которая будет повторяться
+  make_pos_list(N, 0, PosList), % формируем список-алфавит позиций
+  comb(PosList, 2, PosRepeatLetter), % строим сочетание позиций
+  make_position_word(RepeatLetter, N, 0, PosRepeatLetter, PositionWord), % формируем слово, где на позициях из сочетания стоит буква, которую выбрали
+  M is N - 2, % осталось N - 2 букв для заполнения
+
+  select(RepeatLetter2, AlphabetWithoutRepLetter, NewAlphabet), % выбираем вторую букву, которая будет повторяться
+  make_pos_list_without(PosList, PosRepeatLetter, SecondPosList), % создаём алфавит позиций для второй буквы
+  comb(SecondPosList, 2, SecondPosRepeatLetter), % составляем второе сочетание позиций
+  make_position_word_from_other(SecondPosRepeatLetter, RepeatLetter2, PositionWord, SecondPositionWord), % заполняем позиции в слове другой буквой
+  AfterSecondCountRest is M - 2, % осталось мест для заполнения
+
+  select(RepeatLetter3, NewAlphabet, LastAphabet), % выбираем вторую букву, которая будет повторяться
+  make_pos_list_without(SecondPosList, SecondPosRepeatLetter, ThirdPosList), % создаём алфавит позиций для третьей буквы
+  comb(ThirdPosList, K, ThirdPosRepeatLetter), % составляем третье сочетание позиций
+  make_position_word_from_other(ThirdPosRepeatLetter, RepeatLetter3, SecondPositionWord, ThirdPositionWord), % заполняем позиции в слове другой буквой
+  CountRest is AfterSecondCountRest - K, % осталось мест для заполнения  
+
+  razm(LastAphabet, CountRest, RestWord), % строим размещение (без повторений) оставшегося алфавита
+  make_pos_list_without(ThirdPosList, ThirdPosRepeatLetter, PosListForRazm), % делаем список позиций, куда будут установлены буквы из размещения
+  make_position_word_from_other_list(PosListForRazm, RestWord, ThirdPositionWord, Word). % заполняем оставшиеся позиции.
+
+% all_word_length_n_2_repeat2_1_repeat_k(+Alphabet, +N, +K) - печать всех слов, полученных из предиката word_length_n_2_repeat2_1_repeat_k
+all_word_length_n_2_repeat2_1_repeat_k(Alphabet, N, K):-
+  word_length_n_2_repeat2_1_repeat_k(Alphabet, N, K, Word),
+  write_list_str(Word), nl,
+  fail.
+
+% all_word6_2_repeat2(+FilePath, +Alphabet, +N, +K) - печать всех слов длины 6, полученных из предиката word_length_n_2_repeat2_1_repeat_k, в файл
+all_word_length_n_2_repeat2_1_repeat_k_file(FilePath, Alphabet, N, K):-
+  tell(FilePath),
+  not(all_word_length_n_2_repeat2_1_repeat_k(Alphabet, N, K)),
+  told, !.
