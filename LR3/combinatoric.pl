@@ -136,7 +136,7 @@ make_pos_list_without([Position|TailPosList], ExceptPosList, CurResult, ResultPo
   make_pos_list_without(TailPosList, ExceptPosList, [Position|CurResult], ResultPosList), !.
 
 
-% word_length6_2_repeat2(Alphabet, Word) - построить слово длины 6, где ровно 2 буквы повторяются 2 раза, остальные не повторяются
+% word_length6_2_repeat2(+Alphabet, -Word) - построить слово длины 6, где ровно 2 буквы повторяются 2 раза, остальные не повторяются
 word_length6_2_repeat2(Alphabet, Word):-
   select(RepeatLetter, Alphabet, AlphabetWithoutRepLetter), % выбираем первую букву, которая будет повторяться
   make_pos_list(6, 0, PosList), % формируем список-алфавит позиций
