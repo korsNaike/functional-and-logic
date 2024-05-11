@@ -17,13 +17,13 @@ public class Main {
         System.out.println("Hello and welcome!");
 
         try {
-            testPlacementWithRepeats(false, true);
-            testCombinationNoRepeat(true, true);
-            testPlacemenetsWithoutRepeats(false, true);
-            testCombinationWithRepeats(true, true);
-            testWord3A(true);
+//            testPlacementWithRepeats(false, true);
+//            testCombinationNoRepeat(true, true);
+////            testPlacemenetsWithoutRepeats(false, true);
+//            testCombinationWithRepeats(true, true);
+//            testWord3A(true);
             testWordWith2LetterRepeat(true);
-            testWordWithLetterRepeat(true);
+//            testWordWithLetterRepeat(true);
         } catch (IOException exception) {
             System.out.println("404! file not found");
         }
@@ -71,10 +71,10 @@ public class Main {
 
     public static void testCombinationNoRepeat(boolean recursive, boolean toFile) throws IOException {
         CombinationNoRepeat<Integer> comb = new CombinationNoRepeat<>();
-        int k = 3;
+        int k = 2;
         comb.setK(k);
-        comb.setN(5);
-        comb.setAlphabet(new Integer[]{1, 2, 3, 4, 5});
+        comb.setN(6);
+        comb.setAlphabet(new Integer[]{1, 2, 3, 4, 5, 6});
         comb.setCurrentObj(new Integer[k]);
         if (!toFile) {
             comb.setPrinter(new ConsolePrinter());

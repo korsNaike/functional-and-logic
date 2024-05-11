@@ -106,6 +106,9 @@ abstract public class WordWithTwoLetterRepeat<TypeOfAlphabet> extends WordWithLe
                 if (Objects.equals(secondRepeatLetter, firstRepeatLetter)) {
                     continue;
                 }
+                if (j < i) {
+                    continue;
+                }
                 setRepeatLetter(firstRepeatLetter);
                 setSecondRepeatLetter(secondRepeatLetter);
                 init();
