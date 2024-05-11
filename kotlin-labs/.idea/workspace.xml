@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07b4de30-e75a-47ec-8f95-88b20a2147f0" name="Changes" comment="ЛР5. Задание 1. Сумма цифр в числе, максимальное число, факториал" />
+    <list default="true" id="07b4de30-e75a-47ec-8f95-88b20a2147f0" name="Changes" comment="ЛР5. Задание 1. Сумма цифр в числе, максимальное число, факториал">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/CycleFunctions.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/CycleFunctionsTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -38,6 +43,9 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Downloaded.Files.Path.Enabled": "true",
+    "JUnit.CycleFunctionsTest.executor": "Run",
+    "JUnit.CycleFunctionsTest.findMinDigitCycle.executor": "Run",
+    "JUnit.CycleFunctionsTest.findMinDigitEquals.executor": "Run",
     "JUnit.MainKtTest.executor": "Run",
     "Kotlin.Main.executor": "Run",
     "Repository.Attach.Annotations": "true",
@@ -51,7 +59,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "X:/Prolog/LR3/combinatoricObjects",
+    "last_opened_file_path": "X:/Prolog/kotlin-labs",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -72,7 +80,36 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MainKtTest">
+  <component name="RunManager" selected="JUnit.CycleFunctionsTest">
+    <configuration name="CycleFunctionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FPLab5Example" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CycleFunctionsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CycleFunctionsTest.findMinDigitCycle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FPLab5Example" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CycleFunctionsTest" />
+      <option name="METHOD_NAME" value="findMinDigitCycle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CycleFunctionsTest.findMinDigitEquals" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FPLab5Example" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CycleFunctionsTest" />
+      <option name="METHOD_NAME" value="findMinDigitEquals" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainKtTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FPLab5Example" />
       <option name="PACKAGE_NAME" value="" />
@@ -91,11 +128,17 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.CycleFunctionsTest" />
+      <item itemvalue="JUnit.CycleFunctionsTest.findMinDigitCycle" />
+      <item itemvalue="JUnit.CycleFunctionsTest.findMinDigitEquals" />
       <item itemvalue="JUnit.MainKtTest" />
       <item itemvalue="Kotlin.Main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CycleFunctionsTest" />
+        <item itemvalue="JUnit.CycleFunctionsTest.findMinDigitEquals" />
+        <item itemvalue="JUnit.CycleFunctionsTest.findMinDigitCycle" />
         <item itemvalue="JUnit.MainKtTest" />
       </list>
     </recent_temporary>
@@ -119,6 +162,7 @@
       <workItem from="1714217597452" duration="1627000" />
       <workItem from="1714219305321" duration="1434000" />
       <workItem from="1714313068890" duration="52000" />
+      <workItem from="1715419719346" duration="2623000" />
     </task>
     <task id="LOCAL-00001" summary="function max">
       <created>1714054938016</created>
