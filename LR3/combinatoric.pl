@@ -138,13 +138,19 @@ make_pos_list_without([Position|TailPosList], ExceptPosList, CurResult, ResultPo
 
 % word_length6_2_repeat2(+Alphabet, -Word) - построить слово длины 6, где ровно 2 буквы повторяются 2 раза, остальные не повторяются
 word_length6_2_repeat2(Alphabet, Word):-
-  select(RepeatLetter, Alphabet, AlphabetWithoutRepLetter), % выбираем первую букву, которая будет повторяться
+  comb(Alphabet, 2, RepeatsLetter), % выбираем 3 буквы
+  
+  nth1(1, RepeatsLetter, RepeatLetter), % Берём первую букву
+  select(RepeatLetter, Alphabet, AlphabetWithoutRepLetter), % Убираем букву из алфавита
+
   make_pos_list(6, 0, PosList), % формируем список-алфавит позиций
   comb(PosList, 2, PosRepeatLetter), % строим сочетание позиций
   make_position_word(RepeatLetter, 6, 0, PosRepeatLetter, PositionWord), % формируем слово, где на позициях из сочетания стоит буква, которую выбрали
   M is 6 - 2, % осталось 6 - 2 букв для заполнения
 
-  select(RepeatLetter2, AlphabetWithoutRepLetter, NewAlphabet), % выбираем вторую букву, которая будет повторяться
+  nth1(2, RepeatsLetter, RepeatLetter2), % Берём вторую букву
+  select(RepeatLetter2, AlphabetWithoutRepLetter, NewAlphabet), % Убираем букву из алфавита
+
   make_pos_list_without(PosList, PosRepeatLetter, SecondPosList), % создаём алфавит позиций для второй буквы
   comb(SecondPosList, 2, SecondPosRepeatLetter), % составляем второе сочетание позиций
   make_position_word_from_other(SecondPosRepeatLetter, RepeatLetter2, PositionWord, SecondPositionWord), % заполняем позиции в слове другой буквой
@@ -212,19 +218,27 @@ all_word6_2_repeat2_file(FilePath, Alphabet):-
 
 % word_length_n_2_repeat2_1_repeat_k(+Alphabet, +N, +K, Word) - построить слово длины n, где ровно 2 буквы повторяются 2 раза, 1 буква повторяется k раз, остальные не повторяются
 word_length_n_2_repeat2_1_repeat_k(Alphabet, N, K, Word):-
-  select(RepeatLetter, Alphabet, AlphabetWithoutRepLetter), % выбираем первую букву, которая будет повторяться
+  comb(Alphabet, 3, RepeatsLetter), % выбираем 3 буквы
+  
+  nth1(1, RepeatsLetter, RepeatLetter), % Берём первую букву
+  select(RepeatLetter, Alphabet, AlphabetWithoutRepLetter), % Убираем букву из алфавита
+
   make_pos_list(N, 0, PosList), % формируем список-алфавит позиций
   comb(PosList, 2, PosRepeatLetter), % строим сочетание позиций
   make_position_word(RepeatLetter, N, 0, PosRepeatLetter, PositionWord), % формируем слово, где на позициях из сочетания стоит буква, которую выбрали
   M is N - 2, % осталось N - 2 букв для заполнения
 
-  select(RepeatLetter2, AlphabetWithoutRepLetter, NewAlphabet), % выбираем вторую букву, которая будет повторяться
+  nth1(2, RepeatsLetter, RepeatLetter2), % Берём вторую букву
+  select(RepeatLetter2, AlphabetWithoutRepLetter, NewAlphabet), % Убираем букву из алфавита
+
   make_pos_list_without(PosList, PosRepeatLetter, SecondPosList), % создаём алфавит позиций для второй буквы
   comb(SecondPosList, 2, SecondPosRepeatLetter), % составляем второе сочетание позиций
   make_position_word_from_other(SecondPosRepeatLetter, RepeatLetter2, PositionWord, SecondPositionWord), % заполняем позиции в слове другой буквой
   AfterSecondCountRest is M - 2, % осталось мест для заполнения
 
-  select(RepeatLetter3, NewAlphabet, LastAphabet), % выбираем вторую букву, которая будет повторяться
+  nth1(3, RepeatsLetter, RepeatLetter3), % Берём третью букву
+  select(RepeatLetter3, NewAlphabet, LastAphabet), % Убираем букву из алфавита
+
   make_pos_list_without(SecondPosList, SecondPosRepeatLetter, ThirdPosList), % создаём алфавит позиций для третьей буквы
   comb(ThirdPosList, K, ThirdPosRepeatLetter), % составляем третье сочетание позиций
   make_position_word_from_other(ThirdPosRepeatLetter, RepeatLetter3, SecondPositionWord, ThirdPositionWord), % заполняем позиции в слове другой буквой
