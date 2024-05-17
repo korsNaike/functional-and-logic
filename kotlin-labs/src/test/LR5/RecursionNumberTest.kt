@@ -49,4 +49,21 @@ class RecursionNumberTest {
         assertEquals(7, recursionFunc.nod(14, 21))
     }
 
+    @Test
+    fun findMax() {
+        val recursionFunc = RecursionNumberFunctions()
+        assertEquals(
+            32,
+            recursionFunc.findMax(
+                listOf(123, 854, 555), recursionFunc::productOfNonDivisibleBy5Tail)
+        )
+        assertEquals(
+            5,
+            recursionFunc.findMax(
+                listOf(123, 854, 555),
+                recursionFunc::findMinDigitTailRec
+            )
+        )
+    }
+
 }
