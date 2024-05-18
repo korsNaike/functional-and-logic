@@ -97,4 +97,15 @@ class RecursionNumberFunctions {
             newMax
         )
     }
+
+    fun getFunction(functionName: String): ((Int) -> Int)? {
+        return when (functionName) {
+            "findMinDigit" -> ::findMinDigit
+            "findMinDigitTailRec" -> ::findMinDigitTailRec
+            "productOfNonDivisibleBy5" -> ::productOfNonDivisibleBy5
+            "productOfNonDivisibleBy5Tail" -> ::productOfNonDivisibleBy5Tail
+            else -> null
+        }
+    }
+
 }

@@ -1,0 +1,3 @@
+123 findMinDigit
+456 productOfNonDivisibleBy5
+789 findMinDigitTailRec
