@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07b4de30-e75a-47ec-8f95-88b20a2147f0" name="Changes" comment="ЛР5. Задание 7. Максимальный простой делитель и НОД максимального нечётного непростого делителя и произведения цифр числа, не делящихся на 5">
+    <list default="true" id="07b4de30-e75a-47ec-8f95-88b20a2147f0" name="Changes" comment="ЛР5. Задание 8. Задача для проекта Эйлера">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/LR5/RecursionNumberFunctions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/LR5/RecursionNumberFunctions.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/LR5/RecursionNumberTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/LR5/RecursionNumberTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +59,7 @@
     "JUnit.RecursionNumberTest.testProductOfNonDivisibleBy5Tail.executor": "Run",
     "Kotlin.FunctionsInFileKt.executor": "Run",
     "Kotlin.Main.executor": "Run",
+    "Kotlin.RecursionNumberFunctionsKt.executor": "Run",
     "Repository.Attach.Annotations": "true",
     "Repository.Attach.JavaDocs": "true",
     "Repository.Attach.Sources": "false",
@@ -95,7 +95,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RecursionNumberTest.maxPeriod">
+  <component name="RunManager" selected="Kotlin.RecursionNumberFunctionsKt">
     <configuration name="RecursionNumberTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FPLab5Example" />
       <option name="PACKAGE_NAME" value="" />
@@ -135,19 +135,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FunctionsInFileKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="FunctionsInFileKt" />
+    <configuration name="Main" type="JetRunConfigurationType">
+      <option name="MAIN_CLASS_NAME" value="MainKt" />
       <module name="FPLab5Example" />
-      <option name="PROGRAM_PARAMETERS" value="files/numberFunctions/input.txt" />
       <shortenClasspath name="NONE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="JetRunConfigurationType">
-      <option name="MAIN_CLASS_NAME" value="MainKt" />
+    <configuration name="RecursionNumberFunctionsKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="RecursionNumberFunctionsKt" />
       <module name="FPLab5Example" />
-      <shortenClasspath name="NONE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -158,15 +156,15 @@
       <item itemvalue="JUnit.RecursionNumberTest.maxPeriod" />
       <item itemvalue="JUnit.RecursionNumberTest.maxPrimeDivision" />
       <item itemvalue="Kotlin.Main" />
-      <item itemvalue="Kotlin.FunctionsInFileKt" />
+      <item itemvalue="Kotlin.RecursionNumberFunctionsKt" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.RecursionNumberFunctionsKt" />
         <item itemvalue="JUnit.RecursionNumberTest.maxPeriod" />
         <item itemvalue="JUnit.RecursionNumberTest" />
         <item itemvalue="JUnit.RecursionNumberTest.calculateNodAndProductWithOddNonPrimeDivisor" />
         <item itemvalue="JUnit.RecursionNumberTest.maxPrimeDivision" />
-        <item itemvalue="Kotlin.FunctionsInFileKt" />
       </list>
     </recent_temporary>
   </component>
@@ -194,7 +192,7 @@
       <workItem from="1715988944591" duration="109000" />
       <workItem from="1715989076235" duration="220000" />
       <workItem from="1715989313132" duration="1797000" />
-      <workItem from="1716022263230" duration="7495000" />
+      <workItem from="1716022263230" duration="7687000" />
     </task>
     <task id="LOCAL-00001" summary="function max">
       <created>1714054938016</created>
@@ -287,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716029438166</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="ЛР5. Задание 8. Задача для проекта Эйлера">
+      <option name="closed" value="true" />
+      <created>1716032955573</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1716032955573</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,6 +327,7 @@
     <MESSAGE value="ЛР5. Задание 5. Написание тестов и исправления" />
     <MESSAGE value="ЛР5. Задание 6. Программа использования функций по их названию" />
     <MESSAGE value="ЛР5. Задание 7. Максимальный простой делитель и НОД максимального нечётного непростого делителя и произведения цифр числа, не делящихся на 5" />
-    <option name="LAST_COMMIT_MESSAGE" value="ЛР5. Задание 7. Максимальный простой делитель и НОД максимального нечётного непростого делителя и произведения цифр числа, не делящихся на 5" />
+    <MESSAGE value="ЛР5. Задание 8. Задача для проекта Эйлера" />
+    <option name="LAST_COMMIT_MESSAGE" value="ЛР5. Задание 8. Задача для проекта Эйлера" />
   </component>
 </project>

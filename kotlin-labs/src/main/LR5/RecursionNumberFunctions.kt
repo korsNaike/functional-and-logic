@@ -184,9 +184,9 @@ class RecursionNumberFunctions {
     }
 
     /**
-     * Нахождение периода дроби
+     * Найти период дроби
      */
-    fun findPeriod(number: BigInteger, period: Int): Int {
+    fun findPeriod(number: BigInteger, period: Int = 1): Int {
         return if (
             BigInteger("10")
                 .pow(period)
@@ -200,7 +200,7 @@ class RecursionNumberFunctions {
     /**
      * Найти число у которого дробь 1/n имеет максимальный период
      */
-    tailrec fun maxPeriod(currentNumber: Int, max: Int): Int {
+    tailrec fun maxPeriod(currentNumber: Int = 0, max: Int = 0): Int {
         return if (currentNumber > 1000) {
             max + 1
         } else if (
@@ -208,7 +208,7 @@ class RecursionNumberFunctions {
             currentNumber % 5 != 0 &&
             nod(10, currentNumber) == 1 //условия для того, чтобы у дроби был период
         ) {
-            val period = findPeriod(BigInteger(currentNumber.toString()), 1)
+            val period = findPeriod(BigInteger(currentNumber.toString()))
             if (period > max) {
                 maxPeriod(currentNumber + 1, period)
             } else {
@@ -220,4 +220,9 @@ class RecursionNumberFunctions {
     }
 
 
+}
+
+fun main() {
+    val rec = RecursionNumberFunctions()
+    println(rec.maxPeriod())
 }
