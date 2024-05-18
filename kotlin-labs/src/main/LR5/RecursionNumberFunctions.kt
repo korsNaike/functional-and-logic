@@ -1,3 +1,5 @@
+import java.math.BigDecimal
+import java.math.BigInteger
 import kotlin.math.abs;
 
 class RecursionNumberFunctions {
@@ -180,4 +182,42 @@ class RecursionNumberFunctions {
         }
         return isPrime(number, divisor + 1)
     }
+
+    /**
+     * Нахождение периода дроби
+     */
+    fun findPeriod(number: BigInteger, period: Int): Int {
+        return if (
+            BigInteger("10")
+                .pow(period)
+                .minus(BigInteger("1"))
+                .mod(number) == BigInteger("0")
+        )
+            period
+        else findPeriod(number, period + 1)
+    }
+
+    /**
+     * Найти число у которого дробь 1/n имеет максимальный период
+     */
+    tailrec fun maxPeriod(currentNumber: Int, max: Int): Int {
+        return if (currentNumber > 1000) {
+            max + 1
+        } else if (
+            currentNumber % 2 != 0 &&
+            currentNumber % 5 != 0 &&
+            nod(10, currentNumber) == 1 //условия для того, чтобы у дроби был период
+        ) {
+            val period = findPeriod(BigInteger(currentNumber.toString()), 1)
+            if (period > max) {
+                maxPeriod(currentNumber + 1, period)
+            } else {
+                maxPeriod(currentNumber + 1, max)
+            }
+        } else {
+            maxPeriod(currentNumber + 1, max)
+        }
+    }
+
+
 }

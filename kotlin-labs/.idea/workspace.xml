@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07b4de30-e75a-47ec-8f95-88b20a2147f0" name="Changes" comment="ЛР5. Задание 6. Программа использования функций по их названию">
+    <list default="true" id="07b4de30-e75a-47ec-8f95-88b20a2147f0" name="Changes" comment="ЛР5. Задание 7. Максимальный простой делитель и НОД максимального нечётного непростого делителя и произведения цифр числа, не делящихся на 5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/LR5/RecursionNumberFunctions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/LR5/RecursionNumberFunctions.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/LR5/RecursionNumberTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/LR5/RecursionNumberTest.kt" afterDir="false" />
@@ -51,6 +51,7 @@
     "JUnit.RecursionNumberTest.calculateNodAndProductWithOddNonPrimeDivisor.executor": "Run",
     "JUnit.RecursionNumberTest.executor": "Run",
     "JUnit.RecursionNumberTest.findMax.executor": "Run",
+    "JUnit.RecursionNumberTest.maxPeriod.executor": "Run",
     "JUnit.RecursionNumberTest.maxPrimeDivision.executor": "Run",
     "JUnit.RecursionNumberTest.testFindMinDigit.executor": "Run",
     "JUnit.RecursionNumberTest.testFindMinDigitTailRec.executor": "Run",
@@ -94,7 +95,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RecursionNumberTest">
+  <component name="RunManager" selected="JUnit.RecursionNumberTest.maxPeriod">
     <configuration name="RecursionNumberTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FPLab5Example" />
       <option name="PACKAGE_NAME" value="" />
@@ -114,21 +115,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RecursionNumberTest.maxPrimeDivision" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RecursionNumberTest.maxPeriod" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FPLab5Example" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="RecursionNumberTest" />
-      <option name="METHOD_NAME" value="maxPrimeDivision" />
+      <option name="METHOD_NAME" value="maxPeriod" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RecursionNumberTest.testProductOfNonDivisibleBy5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RecursionNumberTest.maxPrimeDivision" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FPLab5Example" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="RecursionNumberTest" />
-      <option name="METHOD_NAME" value="testProductOfNonDivisibleBy5" />
+      <option name="METHOD_NAME" value="maxPrimeDivision" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -154,18 +155,18 @@
     <list>
       <item itemvalue="JUnit.RecursionNumberTest" />
       <item itemvalue="JUnit.RecursionNumberTest.calculateNodAndProductWithOddNonPrimeDivisor" />
+      <item itemvalue="JUnit.RecursionNumberTest.maxPeriod" />
       <item itemvalue="JUnit.RecursionNumberTest.maxPrimeDivision" />
-      <item itemvalue="JUnit.RecursionNumberTest.testProductOfNonDivisibleBy5" />
       <item itemvalue="Kotlin.Main" />
       <item itemvalue="Kotlin.FunctionsInFileKt" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RecursionNumberTest.maxPeriod" />
         <item itemvalue="JUnit.RecursionNumberTest" />
         <item itemvalue="JUnit.RecursionNumberTest.calculateNodAndProductWithOddNonPrimeDivisor" />
         <item itemvalue="JUnit.RecursionNumberTest.maxPrimeDivision" />
         <item itemvalue="Kotlin.FunctionsInFileKt" />
-        <item itemvalue="JUnit.RecursionNumberTest.testProductOfNonDivisibleBy5" />
       </list>
     </recent_temporary>
   </component>
@@ -193,7 +194,7 @@
       <workItem from="1715988944591" duration="109000" />
       <workItem from="1715989076235" duration="220000" />
       <workItem from="1715989313132" duration="1797000" />
-      <workItem from="1716022263230" duration="5477000" />
+      <workItem from="1716022263230" duration="7495000" />
     </task>
     <task id="LOCAL-00001" summary="function max">
       <created>1714054938016</created>
@@ -278,7 +279,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716023250001</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="ЛР5. Задание 7. Максимальный простой делитель и НОД максимального нечётного непростого делителя и произведения цифр числа, не делящихся на 5">
+      <option name="closed" value="true" />
+      <created>1716029438166</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1716029438166</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,6 +320,7 @@
     <MESSAGE value="ЛР5. Задание 4. Функция высшего порядка нахождения максимума" />
     <MESSAGE value="ЛР5. Задание 5. Написание тестов и исправления" />
     <MESSAGE value="ЛР5. Задание 6. Программа использования функций по их названию" />
-    <option name="LAST_COMMIT_MESSAGE" value="ЛР5. Задание 6. Программа использования функций по их названию" />
+    <MESSAGE value="ЛР5. Задание 7. Максимальный простой делитель и НОД максимального нечётного непростого делителя и произведения цифр числа, не делящихся на 5" />
+    <option name="LAST_COMMIT_MESSAGE" value="ЛР5. Задание 7. Максимальный простой делитель и НОД максимального нечётного непростого делителя и произведения цифр числа, не делящихся на 5" />
   </component>
 </project>

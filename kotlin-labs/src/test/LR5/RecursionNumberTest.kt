@@ -101,4 +101,10 @@ class RecursionNumberTest {
         assertEquals(1, recursionFunc.calculateNodAndProductWithOddNonPrimeDivisor(1))
     }
 
+    @Test
+    fun maxPeriod() {
+        val recursionFunc = RecursionNumberFunctions()
+        assertEquals(983, recursionFunc.maxPeriod(0, 0))
+    }
+
 }
