@@ -128,6 +128,16 @@ class RecursionNumberTest {
                 1
             )
         )
+
+        assertEquals(
+            5,
+            recursionFunc.forDigits(
+                98576,
+                { total, digit -> if (digit < total) digit else total},
+                { true },
+                9
+            )
+        )
     }
 
 }
