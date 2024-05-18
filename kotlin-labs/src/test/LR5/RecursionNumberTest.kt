@@ -82,4 +82,23 @@ class RecursionNumberTest {
         )
     }
 
+    @Test
+    fun maxPrimeDivision() {
+        val recursionFunc = RecursionNumberFunctions()
+        assertEquals(17, recursionFunc.maxPrimeDivisor(68))
+        assertEquals(17, recursionFunc.maxPrimeDivisor(51))
+        assertEquals(3, recursionFunc.maxPrimeDivisor(24))
+        assertEquals(2, recursionFunc.maxPrimeDivisor(4))
+        assertEquals(17, recursionFunc.maxPrimeDivisor(17))
+        assertEquals(3, recursionFunc.maxPrimeDivisor(-24))
+    }
+
+    @Test
+    fun calculateNodAndProductWithOddNonPrimeDivisor() {
+        val recursionFunc = RecursionNumberFunctions()
+        assertEquals(1, recursionFunc.calculateNodAndProductWithOddNonPrimeDivisor(24))
+        assertEquals(3, recursionFunc.calculateNodAndProductWithOddNonPrimeDivisor(30))
+        assertEquals(1, recursionFunc.calculateNodAndProductWithOddNonPrimeDivisor(1))
+    }
+
 }

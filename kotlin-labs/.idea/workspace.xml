@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07b4de30-e75a-47ec-8f95-88b20a2147f0" name="Changes" comment="ЛР5. Задание 4. Функция высшего порядка нахождения максимума">
+    <list default="true" id="07b4de30-e75a-47ec-8f95-88b20a2147f0" name="Changes" comment="ЛР5. Задание 6. Программа использования функций по их названию">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/LR5/RecursionNumberFunctions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/LR5/RecursionNumberFunctions.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/LR5/RecursionNumberTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/LR5/RecursionNumberTest.kt" afterDir="false" />
@@ -19,6 +19,7 @@
       <list>
         <option value="JUnit5 Test Class" />
         <option value="Kotlin Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -47,13 +48,16 @@
     "JUnit.CycleFunctionsTest.findMinDigitCycle.executor": "Run",
     "JUnit.CycleFunctionsTest.findMinDigitEquals.executor": "Run",
     "JUnit.MainKtTest.executor": "Run",
+    "JUnit.RecursionNumberTest.calculateNodAndProductWithOddNonPrimeDivisor.executor": "Run",
     "JUnit.RecursionNumberTest.executor": "Run",
     "JUnit.RecursionNumberTest.findMax.executor": "Run",
+    "JUnit.RecursionNumberTest.maxPrimeDivision.executor": "Run",
     "JUnit.RecursionNumberTest.testFindMinDigit.executor": "Run",
     "JUnit.RecursionNumberTest.testFindMinDigitTailRec.executor": "Run",
     "JUnit.RecursionNumberTest.testNod.executor": "Run",
     "JUnit.RecursionNumberTest.testProductOfNonDivisibleBy5.executor": "Run",
     "JUnit.RecursionNumberTest.testProductOfNonDivisibleBy5Tail.executor": "Run",
+    "Kotlin.FunctionsInFileKt.executor": "Run",
     "Kotlin.Main.executor": "Run",
     "Repository.Attach.Annotations": "true",
     "Repository.Attach.JavaDocs": "true",
@@ -83,36 +87,38 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="X:\Prolog\kotlin-labs\files\numberFunctions" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RecursionNumberTest.testProductOfNonDivisibleBy5">
-    <configuration name="RecursionNumberTest.testFindMinDigit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.RecursionNumberTest">
+    <configuration name="RecursionNumberTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FPLab5Example" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="RecursionNumberTest" />
-      <option name="METHOD_NAME" value="testFindMinDigit" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RecursionNumberTest.calculateNodAndProductWithOddNonPrimeDivisor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FPLab5Example" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="RecursionNumberTest" />
+      <option name="METHOD_NAME" value="calculateNodAndProductWithOddNonPrimeDivisor" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RecursionNumberTest.testFindMinDigitTailRec" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RecursionNumberTest.maxPrimeDivision" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FPLab5Example" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="RecursionNumberTest" />
-      <option name="METHOD_NAME" value="testFindMinDigitTailRec" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RecursionNumberTest.testNod" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FPLab5Example" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="RecursionNumberTest" />
-      <option name="METHOD_NAME" value="testNod" />
+      <option name="METHOD_NAME" value="maxPrimeDivision" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -128,12 +134,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RecursionNumberTest.testProductOfNonDivisibleBy5Tail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FunctionsInFileKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FunctionsInFileKt" />
       <module name="FPLab5Example" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="RecursionNumberTest" />
-      <option name="METHOD_NAME" value="testProductOfNonDivisibleBy5Tail" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PROGRAM_PARAMETERS" value="files/numberFunctions/input.txt" />
+      <shortenClasspath name="NONE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -147,20 +152,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.RecursionNumberTest.testFindMinDigit" />
-      <item itemvalue="JUnit.RecursionNumberTest.testFindMinDigitTailRec" />
-      <item itemvalue="JUnit.RecursionNumberTest.testNod" />
+      <item itemvalue="JUnit.RecursionNumberTest" />
+      <item itemvalue="JUnit.RecursionNumberTest.calculateNodAndProductWithOddNonPrimeDivisor" />
+      <item itemvalue="JUnit.RecursionNumberTest.maxPrimeDivision" />
       <item itemvalue="JUnit.RecursionNumberTest.testProductOfNonDivisibleBy5" />
-      <item itemvalue="JUnit.RecursionNumberTest.testProductOfNonDivisibleBy5Tail" />
       <item itemvalue="Kotlin.Main" />
+      <item itemvalue="Kotlin.FunctionsInFileKt" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RecursionNumberTest" />
+        <item itemvalue="JUnit.RecursionNumberTest.calculateNodAndProductWithOddNonPrimeDivisor" />
+        <item itemvalue="JUnit.RecursionNumberTest.maxPrimeDivision" />
+        <item itemvalue="Kotlin.FunctionsInFileKt" />
         <item itemvalue="JUnit.RecursionNumberTest.testProductOfNonDivisibleBy5" />
-        <item itemvalue="JUnit.RecursionNumberTest.testProductOfNonDivisibleBy5Tail" />
-        <item itemvalue="JUnit.RecursionNumberTest.testFindMinDigitTailRec" />
-        <item itemvalue="JUnit.RecursionNumberTest.testFindMinDigit" />
-        <item itemvalue="JUnit.RecursionNumberTest.testNod" />
       </list>
     </recent_temporary>
   </component>
@@ -187,7 +192,8 @@
       <workItem from="1715982118213" duration="5542000" />
       <workItem from="1715988944591" duration="109000" />
       <workItem from="1715989076235" duration="220000" />
-      <workItem from="1715989313132" duration="656000" />
+      <workItem from="1715989313132" duration="1797000" />
+      <workItem from="1716022263230" duration="5477000" />
     </task>
     <task id="LOCAL-00001" summary="function max">
       <created>1714054938016</created>
@@ -256,7 +262,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715988829078</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="ЛР5. Задание 5. Написание тестов и исправления">
+      <option name="closed" value="true" />
+      <created>1715990124519</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1715990124519</updated>
+    </task>
+    <task id="LOCAL-00011" summary="ЛР5. Задание 6. Программа использования функций по их названию">
+      <option name="closed" value="true" />
+      <created>1716023250000</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1716023250001</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,6 +309,8 @@
     <MESSAGE value="ЛР5. Задание 2. Числовые функции с циклами" />
     <MESSAGE value="ЛР5. Задание 3. Рекурсивные Числовые функции" />
     <MESSAGE value="ЛР5. Задание 4. Функция высшего порядка нахождения максимума" />
-    <option name="LAST_COMMIT_MESSAGE" value="ЛР5. Задание 4. Функция высшего порядка нахождения максимума" />
+    <MESSAGE value="ЛР5. Задание 5. Написание тестов и исправления" />
+    <MESSAGE value="ЛР5. Задание 6. Программа использования функций по их названию" />
+    <option name="LAST_COMMIT_MESSAGE" value="ЛР5. Задание 6. Программа использования функций по их названию" />
   </component>
 </project>

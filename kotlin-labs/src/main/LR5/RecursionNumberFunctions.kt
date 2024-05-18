@@ -108,4 +108,76 @@ class RecursionNumberFunctions {
         }
     }
 
+    /**
+     * Максимальный простой делитель
+     */
+    tailrec fun maxPrimeDivisor(n: Int, divisor: Int = 2): Int {
+        return when {
+            divisor * divisor > abs(n) -> abs(n)
+            abs(n) % divisor == 0 -> maxPrimeDivisor(abs(n) / divisor, divisor)
+            else -> maxPrimeDivisor(n, divisor + 1)
+        }
+    }
+
+    /**
+     * Нахождение НОД максимального нечетного непростого делителя и произведения цифр числа, не делящихся на 5
+     */
+    fun calculateNodAndProductWithOddNonPrimeDivisor(number: Int): Int =
+        nod(
+            findMaxOddNonPrimeDivisor(number),
+            productOfNonDivisibleBy5Tail(number)
+        )
+
+    /**
+     * Нахождение максимального нечетного непростого делителя числа
+     */
+    fun findMaxOddNonPrimeDivisor(number: Int): Int = findMax(findDivisors(number)) { divisor ->
+        if (divisor % 2 != 0 && !isPrime(divisor)) divisor else -1
+    }
+
+    /**
+     * Нахождение всех делителей числа
+     */
+    private fun findDivisors(number: Int): List<Int> {
+        return if (number == 1) {
+            listOf(1)
+        } else {
+            findDivisors(number, number - 1, mutableListOf())
+        }
+    }
+
+    /**
+     * Хвостовая рекурсия для нахождения всех делителей числа
+     */
+    private tailrec fun findDivisors(
+        originalNumber: Int,
+        currentDivisor: Int,
+        divisors: MutableList<Int>
+    ): List<Int> {
+        if (currentDivisor == 0) {
+            return divisors
+        }
+
+        if (originalNumber % currentDivisor == 0) {
+            divisors.add(currentDivisor)
+        }
+
+        return findDivisors(originalNumber, currentDivisor - 1, divisors)
+    }
+
+    /**
+     * Проверка числа на простоту
+     */
+    private fun isPrime(number: Int, divisor: Int = 2): Boolean {
+        if (number <= 2) {
+            return number == 2
+        }
+        if (number % divisor == 0) {
+            return false
+        }
+        if (divisor * divisor > number) {
+            return true
+        }
+        return isPrime(number, divisor + 1)
+    }
 }
