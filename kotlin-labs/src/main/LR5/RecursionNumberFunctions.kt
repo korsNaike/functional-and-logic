@@ -206,7 +206,7 @@ class RecursionNumberFunctions {
         } else if (
             currentNumber % 2 != 0 &&
             currentNumber % 5 != 0 &&
-            nod(10, currentNumber) == 1 //условия для того, чтобы у дроби был период
+            nod(10, currentNumber) == 1
         ) {
             val period = findPeriod(BigInteger(currentNumber.toString()))
             if (period > max) {

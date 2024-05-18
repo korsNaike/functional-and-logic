@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07b4de30-e75a-47ec-8f95-88b20a2147f0" name="Changes" comment="ЛР5. Задание 8. Задача для проекта Эйлера">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="07b4de30-e75a-47ec-8f95-88b20a2147f0" name="Changes" comment="ЛР5. Задание 8. Добавил main в файл для запуска">
       <change beforePath="$PROJECT_DIR$/src/main/LR5/RecursionNumberFunctions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/LR5/RecursionNumberFunctions.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -192,7 +191,7 @@
       <workItem from="1715988944591" duration="109000" />
       <workItem from="1715989076235" duration="220000" />
       <workItem from="1715989313132" duration="1797000" />
-      <workItem from="1716022263230" duration="7687000" />
+      <workItem from="1716022263230" duration="7790000" />
     </task>
     <task id="LOCAL-00001" summary="function max">
       <created>1714054938016</created>
@@ -293,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716032955573</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="ЛР5. Задание 8. Добавил main в файл для запуска">
+      <option name="closed" value="true" />
+      <created>1716033112005</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1716033112005</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -328,6 +335,7 @@
     <MESSAGE value="ЛР5. Задание 6. Программа использования функций по их названию" />
     <MESSAGE value="ЛР5. Задание 7. Максимальный простой делитель и НОД максимального нечётного непростого делителя и произведения цифр числа, не делящихся на 5" />
     <MESSAGE value="ЛР5. Задание 8. Задача для проекта Эйлера" />
-    <option name="LAST_COMMIT_MESSAGE" value="ЛР5. Задание 8. Задача для проекта Эйлера" />
+    <MESSAGE value="ЛР5. Задание 8. Добавил main в файл для запуска" />
+    <option name="LAST_COMMIT_MESSAGE" value="ЛР5. Задание 8. Добавил main в файл для запуска" />
   </component>
 </project>
