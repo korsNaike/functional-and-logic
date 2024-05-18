@@ -71,6 +71,22 @@ class RecursionNumberFunctions {
     tailrec fun nod(a: Int, b: Int): Int = if (b == 0) abs(a) else nod(b, a % b)
 
     /**
+     * Функция высших порядков прохождения по каждой цифре числа
+     */
+    fun forDigits(number: Int, callbackFun: (Int, Int) -> Int, filterFun: (Int) -> Boolean, acc: Int = 0): Int {
+        return if (number == 0) {
+            acc
+        } else {
+            val digit = number % 10
+            var newAcc = acc
+            if (filterFun(digit)) {
+                newAcc = callbackFun(acc, digit)
+            }
+            forDigits(number / 10, callbackFun, filterFun, newAcc)
+        }
+    }
+
+    /**
      * Функция высших порядков для нахождения максимума среди чисел в списке по переданной функции
      */
     fun findMax(numbers: List<Int>, callbackFun: (Int) -> Int): Int {

@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07b4de30-e75a-47ec-8f95-88b20a2147f0" name="Changes" comment="ЛР5. Задание 8. Добавил main в файл для запуска">
+    <list default="true" id="07b4de30-e75a-47ec-8f95-88b20a2147f0" name="Changes" comment="ЛР5. Задание 8. Поменял комментарии">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/LR5/RecursionNumberFunctions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/LR5/RecursionNumberFunctions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/LR5/RecursionNumberTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/LR5/RecursionNumberTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +51,7 @@
     "JUnit.RecursionNumberTest.calculateNodAndProductWithOddNonPrimeDivisor.executor": "Run",
     "JUnit.RecursionNumberTest.executor": "Run",
     "JUnit.RecursionNumberTest.findMax.executor": "Run",
+    "JUnit.RecursionNumberTest.forDigits.executor": "Run",
     "JUnit.RecursionNumberTest.maxPeriod.executor": "Run",
     "JUnit.RecursionNumberTest.maxPrimeDivision.executor": "Run",
     "JUnit.RecursionNumberTest.testFindMinDigit.executor": "Run",
@@ -94,7 +97,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Kotlin.RecursionNumberFunctionsKt">
+  <component name="RunManager" selected="JUnit.RecursionNumberTest.forDigits">
     <configuration name="RecursionNumberTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FPLab5Example" />
       <option name="PACKAGE_NAME" value="" />
@@ -114,21 +117,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RecursionNumberTest.maxPeriod" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RecursionNumberTest.forDigits" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FPLab5Example" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="RecursionNumberTest" />
-      <option name="METHOD_NAME" value="maxPeriod" />
+      <option name="METHOD_NAME" value="forDigits" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RecursionNumberTest.maxPrimeDivision" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RecursionNumberTest.maxPeriod" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FPLab5Example" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="RecursionNumberTest" />
-      <option name="METHOD_NAME" value="maxPrimeDivision" />
+      <option name="METHOD_NAME" value="maxPeriod" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -152,18 +155,18 @@
     <list>
       <item itemvalue="JUnit.RecursionNumberTest" />
       <item itemvalue="JUnit.RecursionNumberTest.calculateNodAndProductWithOddNonPrimeDivisor" />
+      <item itemvalue="JUnit.RecursionNumberTest.forDigits" />
       <item itemvalue="JUnit.RecursionNumberTest.maxPeriod" />
-      <item itemvalue="JUnit.RecursionNumberTest.maxPrimeDivision" />
       <item itemvalue="Kotlin.Main" />
       <item itemvalue="Kotlin.RecursionNumberFunctionsKt" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RecursionNumberTest.forDigits" />
         <item itemvalue="Kotlin.RecursionNumberFunctionsKt" />
         <item itemvalue="JUnit.RecursionNumberTest.maxPeriod" />
         <item itemvalue="JUnit.RecursionNumberTest" />
         <item itemvalue="JUnit.RecursionNumberTest.calculateNodAndProductWithOddNonPrimeDivisor" />
-        <item itemvalue="JUnit.RecursionNumberTest.maxPrimeDivision" />
       </list>
     </recent_temporary>
   </component>
@@ -191,7 +194,7 @@
       <workItem from="1715988944591" duration="109000" />
       <workItem from="1715989076235" duration="220000" />
       <workItem from="1715989313132" duration="1797000" />
-      <workItem from="1716022263230" duration="7790000" />
+      <workItem from="1716022263230" duration="8924000" />
     </task>
     <task id="LOCAL-00001" summary="function max">
       <created>1714054938016</created>
@@ -300,7 +303,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716033112005</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="ЛР5. Задание 8. Поменял комментарии">
+      <option name="closed" value="true" />
+      <created>1716033209440</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1716033209440</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,6 +347,7 @@
     <MESSAGE value="ЛР5. Задание 7. Максимальный простой делитель и НОД максимального нечётного непростого делителя и произведения цифр числа, не делящихся на 5" />
     <MESSAGE value="ЛР5. Задание 8. Задача для проекта Эйлера" />
     <MESSAGE value="ЛР5. Задание 8. Добавил main в файл для запуска" />
-    <option name="LAST_COMMIT_MESSAGE" value="ЛР5. Задание 8. Добавил main в файл для запуска" />
+    <MESSAGE value="ЛР5. Задание 8. Поменял комментарии" />
+    <option name="LAST_COMMIT_MESSAGE" value="ЛР5. Задание 8. Поменял комментарии" />
   </component>
 </project>

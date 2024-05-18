@@ -107,4 +107,27 @@ class RecursionNumberTest {
         assertEquals(983, recursionFunc.maxPeriod(0, 0))
     }
 
+    @Test
+    fun forDigits() {
+        val recursionFunc = RecursionNumberFunctions()
+        assertEquals(
+            10,
+            recursionFunc.forDigits(
+                18572,
+                { total, digit -> total + digit },
+                { it % 2 == 0 }
+                )
+        )
+
+        assertEquals(
+            35,
+            recursionFunc.forDigits(
+                272454,
+                { total, digit -> total * digit},
+                { it % 2 != 0 },
+                1
+            )
+        )
+    }
+
 }
