@@ -30,8 +30,8 @@ class ListFunctions {
      * Создать список из кортежей по 3 элемента по специальной сортировке
      */
     fun createTripletList(list1: List<Int>, list2: List<Int>, list3: List<Int>): List<Triple<Int, Int, Int>> {
-        val returnedList = list1.sortedDescending()
-        return returnedList.mapIndexed { index, value ->
+        return list1.sortedDescending()
+            .mapIndexed { index, value ->
             Triple(
                 value,
                 list2.sortedBy { sumDigits(it) }[index],
