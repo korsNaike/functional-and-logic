@@ -1,3 +1,5 @@
+package LR5
+
 import java.lang.System.`in`
 import java.util.*
 

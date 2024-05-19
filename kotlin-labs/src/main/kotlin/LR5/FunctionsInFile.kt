@@ -1,3 +1,5 @@
+package LR5
+
 import java.io.File
 
 fun main(args: Array<String>) {

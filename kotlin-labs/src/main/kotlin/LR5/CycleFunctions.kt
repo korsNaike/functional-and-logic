@@ -1,3 +1,5 @@
+package LR5
+
 class CycleFunctions {
 
     /**
