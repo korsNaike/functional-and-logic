@@ -33,7 +33,7 @@ class StringTree(var comparator: Comparator<String>, var root: StringNode? = nul
         return node
     }
 
-    tailrec fun from(list: List<String>): StringTree {
+    fun from(list: List<String>): StringTree {
         root = null
         return from(list, list.size, 0)
     }
@@ -59,10 +59,6 @@ class StringTree(var comparator: Comparator<String>, var root: StringNode? = nul
             list.addAll(toList(node.right))
         }
         return list
-    }
-
-    fun sortByWordCount(list: List<String>): List<String> {
-        return list.sortedBy { it.split("\\s+".toRegex()).size }
     }
 
 }
