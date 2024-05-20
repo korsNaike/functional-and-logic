@@ -1,7 +1,6 @@
 package LR6
 
 import LR5.RecursionNumberFunctions
-import kotlin.math.max
 
 class ListFunctions {
 
@@ -33,12 +32,12 @@ class ListFunctions {
     fun createTripletList(list1: List<Int>, list2: List<Int>, list3: List<Int>): List<Triple<Int, Int, Int>> {
         return list1.sortedDescending()
             .mapIndexed { index, value ->
-            Triple(
-                value,
-                list2.sortedBy { sumDigits(it) }[index],
-                list3.sortedByDescending { countDivisors(it) }[index]
-            )
-        }
+                Triple(
+                    value,
+                    list2.sortedBy { sumDigits(it) }[index],
+                    list3.sortedByDescending { countDivisors(it) }[index]
+                )
+            }
     }
 
     /**
@@ -89,9 +88,9 @@ class ListFunctions {
         val maxFrom = if (maxFromPre > maxTo) maxFromPre + 1 else maxFromPre
 
         return if (maxTo > maxFrom) {
-            list.filterIndexed { index, _ ->  index > maxFrom && index < maxTo}
+            list.filterIndexed { index, _ -> index > maxFrom && index < maxTo }
         } else {
-            list.filterIndexed { index, _ ->  index < maxFrom && index > maxTo}
+            list.filterIndexed { index, _ -> index < maxFrom && index > maxTo }
         }
     }
 
@@ -114,6 +113,67 @@ class ListFunctions {
             val prev = if (index == 0) Int.MIN_VALUE else list[index - 1]
             val next = if (index == list.lastIndex) Int.MIN_VALUE else list[index + 1]
             curr > prev && curr > next
+        }
+    }
+
+    /**
+     * Получить список, где идут сначала чётные индексы, а затем нечётные
+     */
+    fun firstEvenThenOdd(list: List<Int>): List<Int> {
+        val evenList = list.filterIndexed { index, _ -> index % 2 == 0 }
+        val oddList = list.filterIndexed { index, _ -> index % 2 != 0 }
+        return evenList + oddList;
+    }
+
+    /**
+     * Проверить чередование целых и вещественных
+     */
+    fun hasAlternation(numbers: List<Double>): Boolean {
+        return if (numbers[0] % 1.0 == 0.0) {
+            hasAlternation(numbers, 0, false)
+        } else {
+            hasAlternation(numbers, 0, true)
+        }
+    }
+
+    /**
+     * Проверить чередование целых и вещественных
+     */
+    fun hasAlternation(numbers: List<Double>, index: Int = 0, prevIsInt: Boolean): Boolean {
+        if (numbers.size == index) return true
+
+        val isInt = numbers[index] % 1.0 == 0.0
+        return if (isInt == prevIsInt) {
+            false
+        } else {
+            hasAlternation(numbers,index + 1, isInt)
+        }
+    }
+
+    /**
+     * Составить список из простых делителей числа, причём если на число можно разделить n раз,
+     * то оно будет присутствовать в списке n раз.
+     */
+    fun findPrimeDivisors(number: Int, divisor: Int = 2): List<Int> {
+        return when {
+            number <= 1 -> emptyList()
+            number % divisor == 0 ->  {
+                val updatedNumber = number / divisor
+                listOf(divisor) + findPrimeDivisors(updatedNumber, divisor)
+            }
+            else -> findPrimeDivisors(number, divisor + 1)
+        }
+    }
+
+    /**
+     * Посчитать количество элементов в списке, которые больше, чем сумма предыдущих
+     */
+    fun countElementsGreaterThanSumOfPrevious(inputList: List<Int>): Int {
+        var sum = 0
+        return inputList.count { el ->
+            val isGreaterThanSum = el > sum
+            sum += el
+            isGreaterThanSum
         }
     }
 

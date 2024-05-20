@@ -94,4 +94,59 @@ class ListFunctionTest {
         assertEquals(3, listFunctions.countLocalMaxima(listOf(3, 2, 5, 4, 6, 2)))
         assertEquals(3, listFunctions.countLocalMaxima(listOf(3, 2, 5, 4, 2, 6)))
     }
+
+    @Test
+    fun firstEvenThenOdd() {
+        val listFunctions = ListFunctions()
+        assertEquals(listOf(1, 2, 4, 2, 3, 5, 6), listFunctions.firstEvenThenOdd(listOf(1, 3, 2, 5, 4, 6, 2)))
+        assertEquals(listOf(1, 1, 2), listFunctions.firstEvenThenOdd(listOf(1, 2, 1)))
+        assertEquals(listOf(1, 1, 2, 2), listFunctions.firstEvenThenOdd(listOf(1, 2, 1, 2)))
+    }
+
+    @Test
+    fun hasAlternation() {
+        val listFunctions = ListFunctions()
+        assertTrue(listFunctions.hasAlternation(listOf(1.0, 3.1, 2.0, 5.2, 4.0, 6.5, 2.0)))
+        assertFalse(listFunctions.hasAlternation(listOf(1.0, 3.1, 2.5, 5.2, 4.0, 6.5, 2.0)))
+    }
+
+    @Test
+    fun `find prime factors for small numbers`() {
+        val listFunctions = ListFunctions()
+        assertEquals(emptyList<Int>(), listFunctions.findPrimeDivisors(1))
+        assertEquals(listOf(2), listFunctions.findPrimeDivisors(2))
+        assertEquals(listOf(3), listFunctions.findPrimeDivisors(3))
+        assertEquals(listOf(2, 2), listFunctions.findPrimeDivisors(4))
+        assertEquals(listOf(5), listFunctions.findPrimeDivisors(5))
+        assertEquals(listOf(2, 3), listFunctions.findPrimeDivisors(6))
+        assertEquals(listOf(7), listFunctions.findPrimeDivisors(7))
+        assertEquals(listOf(2, 2, 2), listFunctions.findPrimeDivisors(8))
+        assertEquals(listOf(3, 3), listFunctions.findPrimeDivisors(9))
+        assertEquals(listOf(2, 5), listFunctions.findPrimeDivisors(10))
+    }
+
+    @Test
+    fun `find prime factors for large numbers`() {
+        val listFunctions = ListFunctions()
+        assertEquals(listOf(3, 3, 5, 7), listFunctions.findPrimeDivisors(315))
+        assertEquals(listOf(2, 2, 2, 3, 3, 7), listFunctions.findPrimeDivisors(504))
+        assertEquals(listOf(2, 3, 5, 7, 11, 13), listFunctions.findPrimeDivisors(30030))
+        assertEquals(listOf(2, 3, 5, 7, 11, 13, 17, 19), listFunctions.findPrimeDivisors(9699690))
+    }
+
+    @Test
+    fun `find prime factors for powers of numbers`() {
+        val listFunctions = ListFunctions()
+        assertEquals(listOf(2, 2, 2, 2), listFunctions.findPrimeDivisors(16))
+        assertEquals(listOf(3, 3, 3, 3), listFunctions.findPrimeDivisors(81))
+        assertEquals(listOf(5, 5, 5, 5), listFunctions.findPrimeDivisors(625))
+        assertEquals(listOf(2, 2, 2, 3, 3, 3, 3), listFunctions.findPrimeDivisors(648))
+    }
+
+    @Test
+    fun countElementsGreaterThanSumOfPrevious() {
+        val listFunctions = ListFunctions()
+        assertEquals(4, listFunctions.countElementsGreaterThanSumOfPrevious(listOf(1, 2, 4, 8, 9)))
+        assertEquals(1, listFunctions.countElementsGreaterThanSumOfPrevious(listOf(1)))
+    }
 }
