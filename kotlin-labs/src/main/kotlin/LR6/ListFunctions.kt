@@ -146,7 +146,7 @@ class ListFunctions {
         return if (isInt == prevIsInt) {
             false
         } else {
-            hasAlternation(numbers,index + 1, isInt)
+            hasAlternation(numbers, index + 1, isInt)
         }
     }
 
@@ -157,10 +157,11 @@ class ListFunctions {
     fun findPrimeDivisors(number: Int, divisor: Int = 2): List<Int> {
         return when {
             number <= 1 -> emptyList()
-            number % divisor == 0 ->  {
+            number % divisor == 0 -> {
                 val updatedNumber = number / divisor
                 listOf(divisor) + findPrimeDivisors(updatedNumber, divisor)
             }
+
             else -> findPrimeDivisors(number, divisor + 1)
         }
     }
@@ -175,6 +176,52 @@ class ListFunctions {
             sum += el
             isGreaterThanSum
         }
+    }
+
+    /**
+     * Пифагорова тройка
+     */
+    fun findPythagoreanTriples(inputList: List<Int>): List<Triple<Int, Int, Int>> {
+        val sortedList = inputList.sorted()
+        return sortedList.flatMap { a ->
+            sortedList.flatMap { b ->
+                sortedList.mapNotNull { c ->
+                    if (a < b && b < c && a * a + b * b == c * c) Triple(a, b, c) else null
+                }
+            }
+        }
+    }
+
+    /**
+     * Сортировка кортежей по возрастанию, причём в результате оставить только кортежи ЦИФР
+     */
+    fun sortTuples(list: List<List<Int>>): List<Int> {
+        return list.filter { it.all { it in 0..9 } }
+            .map { it.joinToString("").toInt() }
+            .sorted()
+    }
+
+    /**
+     * Список частот цифр в списке
+     */
+    fun listOfAverageOfFrequentDigits(list: List<Int>): List<Double> {
+        val digitsList = listOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+        val dictOfFreqDigits = digitsList.associateWith { countFreqDigitInList(it, list) }
+        return list.map { mapEl ->
+            val sumFreqDigits = mapEl.toString()
+                .map { it.digitToInt() }
+                .fold(0) { acc, el -> acc + dictOfFreqDigits[el]!! }
+            val sizeDigits = mapEl.toString().length
+            sumFreqDigits.toDouble() / sizeDigits.toDouble()
+        }
+    }
+
+    /**
+     * Считаем сколько раз повторяется цифра в списке
+     */
+    private fun countFreqDigitInList(digit: Int, list: List<Int>): Int {
+        return list.fold(0) { acc, el ->
+            acc + el.toString().map { it.digitToInt() }.count { it == digit } }
     }
 
 }

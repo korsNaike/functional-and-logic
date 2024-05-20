@@ -22,11 +22,13 @@ class ListFunctionTest {
             Triple(11, 7, 11),
         )
 
-        assertEquals(result, listFunctions.createTripletList(
-            listOf(31, 11, 26),
-            listOf(13, 131, 7),
-            listOf(8, 16, 11)
-        ))
+        assertEquals(
+            result, listFunctions.createTripletList(
+                listOf(31, 11, 26),
+                listOf(13, 131, 7),
+                listOf(8, 16, 11)
+            )
+        )
     }
 
     @Test
@@ -50,13 +52,17 @@ class ListFunctionTest {
     @Test
     fun testFindCountMinInInterval() {
         val listFunctions = ListFunctions()
-        assertEquals(3, listFunctions.findCountMinInInterval(
-            listOf(1, 2, 3, 4, 4, 4, 5, 6, 7),
-            Pair(4, 7))
+        assertEquals(
+            3, listFunctions.findCountMinInInterval(
+                listOf(1, 2, 3, 4, 4, 4, 5, 6, 7),
+                Pair(4, 7)
+            )
         )
-        assertEquals(1, listFunctions.findCountMinInInterval(
-            listOf(1, 2, 3, 4, 4, 4, 5, 6, 7),
-            Pair(1, 5))
+        assertEquals(
+            1, listFunctions.findCountMinInInterval(
+                listOf(1, 2, 3, 4, 4, 4, 5, 6, 7),
+                Pair(1, 5)
+            )
         )
     }
 
@@ -148,5 +154,43 @@ class ListFunctionTest {
         val listFunctions = ListFunctions()
         assertEquals(4, listFunctions.countElementsGreaterThanSumOfPrevious(listOf(1, 2, 4, 8, 9)))
         assertEquals(1, listFunctions.countElementsGreaterThanSumOfPrevious(listOf(1)))
+    }
+
+    @Test
+    fun findPythagoreanTriples() {
+        val listFunctions = ListFunctions()
+        assertEquals(
+            listOf(Triple(3, 4, 5), Triple(5, 12, 13)),
+            listFunctions.findPythagoreanTriples(listOf(1, 4, 3, 6, 11, 5, 12, 19, 13))
+        )
+    }
+
+    @Test
+    fun sortTuples() {
+        val listFunctions = ListFunctions()
+        assertEquals(
+            listOf(23456, 23467, 73456),
+            listFunctions.sortTuples(
+                listOf(
+                    listOf(7, 3, 4, 5, 6),
+                    listOf(2, 3, 4, 6, 7),
+                    listOf(2, 3, 4, 5, 6),
+                    listOf(4, 3, 10, 4, 5)
+                )
+            )
+        )
+    }
+
+    @Test
+    fun listOfAverageOfFrequentDigits() {
+        val listFunctions = ListFunctions()
+        assertEquals(
+            listOf(1.0, 1.0, 1.0),
+            listFunctions.listOfAverageOfFrequentDigits(listOf(123, 456, 789))
+        )
+        assertEquals(
+            listOf(1.0, 1.8, 1.0),
+            listFunctions.listOfAverageOfFrequentDigits(listOf(123, 45654, 789))
+        )
     }
 }
