@@ -3,7 +3,7 @@ package LR6
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-class DrivingLicense(
+open class DrivingLicense(
     val series: String,
     val number: String,
     val issueDate: LocalDate,
